@@ -10,7 +10,7 @@ export default function About() {
         <title>AnySong - About</title>
         <meta name="description" content="Three friends. One Friday night. Learn the story behind AnySong." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/any-song_icon.png" />
       </Head>
       
       <div className={styles.container}>
@@ -43,17 +43,17 @@ export default function About() {
                 <span className={styles.emoji}>🎤</span>
               </h2>
               <p className={styles.paragraph}>
-                Three friends. One Friday night.
+                Three friends. One Friday night. 
               </p>
               <p className={styles.paragraph}>
-                Luigi, José and Kruta were tired of scrolling through the same old songs, never finding <em>that perfect track</em>. That night, a simple question changed everything: <strong>"Why can't we just sing ANY song we want?"</strong>
+                Luigi, José and Kruta were tired of the same old songs, never finding <em>that perfect track</em>. That night, one question changed everything: <strong>"Why can't we just sing ANY song we want?"</strong>
               </p>
             </section>
 
             <section className={styles.section}>
               <h2 className={styles.sectionTitle}>From Limitation to Liberation</h2>
               <p className={styles.paragraph}>
-                Millions of karaoke lovers face the same problem – being stuck with catalogs that never have your favorite song. Whether it's the latest hit or that nostalgic childhood track, traditional karaoke always leaves someone wanting more.
+                Millions face the same problem – being stuck with catalogs that never have your favorite song. Traditional karaoke always leaves someone wanting more.
               </p>
               <p className={styles.highlight}>
                 Our mission: Break down the barriers between you and your perfect karaoke moment.
@@ -63,10 +63,7 @@ export default function About() {
             <section className={styles.section}>
               <h2 className={styles.sectionTitle}>A Place for Everyone</h2>
               <p className={styles.paragraph}>
-                Using AI technology, AnySong transforms any song into a professional karaoke experience. Our AI separates vocals, synchronizes lyrics, and delivers that authentic karaoke feeling – without limits.
-              </p>
-              <p className={styles.paragraph}>
-                Every voice deserves to be heard, every song tells a story, and musical freedom knows no boundaries.
+                Using AI technology, AnySong transforms any song into a professional karaoke experience. Our AI separates vocals, synchronizes lyrics, and delivers that authentic feeling – without limits.
               </p>
               <p className={styles.callToAction}>
                 <em>Ready to find your voice? Your song is waiting.</em>
@@ -79,7 +76,7 @@ export default function About() {
                 <strong>From three friends who refused to be limited by songbooks, to a community embracing unlimited musical freedom.</strong>
               </p>
               <p className={styles.welcomeText}>
-                <em>Welcome to AnySong.</em>
+                <em>Welcome to AnySong.</em> 
               </p>
             </footer>
           </div>

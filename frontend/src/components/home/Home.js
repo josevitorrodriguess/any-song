@@ -7,10 +7,10 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Any Song - Transform any song into Karaoke</title>
+        <title>AnySong - Transform any song into Karaoke</title>
         <meta name="description" content="Transform any song into Karaoke with Any Song" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/any-song_icon.png" />
       </Head>
       
       <div className={styles.container}>
@@ -31,7 +31,9 @@ export default function Home() {
             <p className={styles.subtitle}>Transform any song into Karaoke</p>
             
             <div className={styles.buttonGroup}>
-              <button className={styles.primaryButton}>Join Now</button>
+              <Link href="/karaoke" className={styles.primaryButton}>
+                Join Now
+              </Link>
               <Link href="/about" className={styles.secondaryButton}>
                 More About
               </Link>
