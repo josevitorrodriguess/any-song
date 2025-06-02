@@ -54,6 +54,7 @@
 .nav {
   display: flex;
   gap: 1rem;
+  align-items: center;
 }
 
 .navLink {
@@ -322,4 +323,28 @@
     padding: 0.8rem 1.5rem;
     font-size: 0.9rem;
   }
+}
+
+/* Loading Container */
+.loadingContainer {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #A0FDAE, #10b981);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: #1f2937;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.loadingSpinner {
+  font-size: 3rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 } 

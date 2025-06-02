@@ -1,9 +1,36 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useAuth } from "@/contexts/AuthContext";
+import { useState } from "react";
 import styles from "./Home.module.css";
 
 export default function Home() {
+  const { user, signInWithGoogle } = useAuth();
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+
+  const handleJoinNow = async () => {
+    if (user) {
+      // Se já está logado, vai direto para karaoke
+      router.push('/karaoke');
+      return;
+    }
+
+    try {
+      setLoading(true);
+      await signInWithGoogle();
+      // Após login bem-sucedido, redireciona para karaoke
+      router.push('/karaoke');
+    } catch (error) {
+      console.error('Erro no login:', error);
+      alert('Erro ao fazer login. Tente novamente.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <Head>
@@ -31,9 +58,19 @@ export default function Home() {
             <p className={styles.subtitle}>Transform any song into Karaoke</p>
             
             <div className={styles.buttonGroup}>
-              <Link href="/karaoke" className={styles.primaryButton}>
-                Join Now
-              </Link>
+              <button 
+                onClick={handleJoinNow}
+                className={styles.primaryButton}
+                disabled={loading}
+              >
+                {loading ? (
+                  <span className={styles.loadingSpinner}>⏳</span>
+                ) : user ? (
+                  'Join Now'
+                ) : (
+                  'Sign In'
+                )}
+              </button>
               <Link href="/about" className={styles.secondaryButton}>
                 More About
               </Link>

@@ -2,14 +2,35 @@ import { useState } from 'react';
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useAuth } from "@/contexts/AuthContext";
 import Upload from '@/components/upload/Upload';
 import Search from '@/components/search/Search';
+import UserProfile from '@/components/profile/UserProfile';
 import styles from './Karaoke.module.css';
 
 export default function Karaoke() {
+  const { user, loading } = useAuth();
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState('upload');
   const [uploadedFile, setUploadedFile] = useState(null);
   const [selectedSong, setSelectedSong] = useState(null);
+
+  // Redirecionar para home se não estiver logado
+  if (!loading && !user) {
+    router.push('/');
+    return null;
+  }
+
+  // Mostrar loading enquanto verifica autenticação
+  if (loading) {
+    return (
+      <div className={styles.loadingContainer}>
+        <div className={styles.loadingSpinner}>⏳</div>
+        <p>Loading...</p>
+      </div>
+    );
+  }
 
   const handleFileUpload = (file) => {
     setUploadedFile(file);
@@ -47,6 +68,7 @@ export default function Karaoke() {
               <Link href="/about" className={styles.navLink}>
                 About
               </Link>
+              <UserProfile />
             </nav>
           </div>
         </div>
