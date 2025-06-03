@@ -1,17 +1,15 @@
 /* About Page Styles */
 .container {
-  position: relative;
+  display: flex;
   min-height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 .backgroundSection {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -2;
+  position: relative;
+  flex: 1;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
 .backgroundImage {
@@ -25,29 +23,23 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(160, 253, 174, 0.85), rgba(16, 185, 129, 0.85));
+  background: transparent;
   z-index: 1;
 }
 
 .contentSection {
-  position: relative;
-  z-index: 2;
-  min-height: 100vh;
+  flex: 1;
+  background: linear-gradient(135deg, #A0FDAE, #10b981);
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 2rem 1rem;
+  justify-content: center;
+  padding: 3rem 2rem;
 }
 
 .content {
-  max-width: 1000px;
+  max-width: 600px;
   width: 100%;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 2.5rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
 }
 
 .navigation {
@@ -58,34 +50,37 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: #10b981;
+  color: #1f2937;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   text-decoration: none;
-  padding: 0.4rem 0.8rem;
-  border-radius: 25px;
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.2);
+  padding: 0.5rem 1.2rem;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(31, 41, 55, 0.1);
   transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
 .backButton:hover {
-  background: rgba(16, 185, 129, 0.2);
-  transform: translateX(-3px);
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .header {
-  text-align: center;
+  text-align: left;
   margin-bottom: 2rem;
 }
 
 .mainTitle {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 900;
   color: #1f2937;
   margin: 0;
   letter-spacing: -0.02em;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  line-height: 1.1;
 }
 
 .section {
@@ -95,11 +90,12 @@
 .sectionTitle {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #10b981;
-  margin-bottom: 1rem;
+  color: #1f2937;
+  margin-bottom: 0.8rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  line-height: 1.2;
 }
 
 .emoji {
@@ -108,9 +104,10 @@
 
 .paragraph {
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.5;
   color: #374151;
   margin-bottom: 0.8rem;
+  font-weight: 400;
 }
 
 .paragraph:last-child {
@@ -119,7 +116,7 @@
 
 .paragraph em {
   font-style: italic;
-  color: #10b981;
+  color: #1f2937;
   font-weight: 600;
 }
 
@@ -131,21 +128,24 @@
 .highlight {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #10b981;
+  color: #1f2937;
   text-align: center;
-  padding: 1.2rem;
-  background: linear-gradient(135deg, rgba(160, 253, 174, 0.2), rgba(16, 185, 129, 0.2));
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
   border-radius: 15px;
-  border-left: 4px solid #10b981;
+  border: 2px solid rgba(31, 41, 55, 0.1);
   margin: 1rem 0;
+  line-height: 1.3;
 }
 
 .callToAction {
-  font-size: 1.1rem;
+  font-size: 1rem;
   text-align: center;
-  color: #10b981;
+  color: #1f2937;
   font-weight: 600;
   margin-top: 1rem;
+  font-style: italic;
 }
 
 .footer {
@@ -156,22 +156,23 @@
 .divider {
   border: none;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #10b981, transparent);
-  margin: 1.5rem 0;
+  background: linear-gradient(90deg, transparent, rgba(31, 41, 55, 0.3), transparent);
+  margin: 1.2rem 0;
 }
 
 .footerText {
   font-size: 1rem;
   color: #374151;
   margin-bottom: 0.8rem;
-  line-height: 1.5;
+  line-height: 1.4;
+  font-weight: 500;
 }
 
 .welcomeText {
-  font-size: 1.2rem;
-  color: #10b981;
-  font-weight: 600;
-  margin-top: 0.8rem;
+  font-size: 1.1rem;
+  color: #1f2937;
+  font-weight: 700;
+  margin-top: 0.5rem;
 }
 
 .musicNote {
@@ -192,24 +193,22 @@
 }
 
 /* Responsive Design */
-@media (max-width: 1200px) {
-  .content {
-    max-width: 900px;
-  }
-}
-
 @media (max-width: 768px) {
-  .contentSection {
-    padding: 1.5rem 0.8rem;
+  .container {
+    flex-direction: column;
   }
   
-  .content {
-    padding: 2rem;
-    border-radius: 15px;
+  .backgroundSection {
+    min-height: 40vh;
+  }
+  
+  .contentSection {
+    min-height: 60vh;
+    padding: 2rem 1rem;
   }
   
   .mainTitle {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
   
   .sectionTitle {
@@ -222,26 +221,21 @@
   
   .highlight {
     font-size: 1rem;
-    padding: 1rem;
+    padding: 0.8rem;
   }
   
   .callToAction {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 }
 
 @media (max-width: 480px) {
   .contentSection {
-    padding: 1rem 0.5rem;
-  }
-  
-  .content {
-    padding: 1.5rem;
-    border-radius: 10px;
+    padding: 1.5rem 1rem;
   }
   
   .mainTitle {
-    font-size: 1.7rem;
+    font-size: 1.8rem;
   }
   
   .sectionTitle {

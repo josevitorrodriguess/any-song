@@ -1,0 +1,311 @@
+/* Search Component Styles */
+.searchContainer {
+  width: 100%;
+  max-width: 500px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.searchForm {
+  margin-bottom: 2rem;
+}
+
+.searchInputGroup {
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  padding: 0.3rem;
+  border: 2px solid rgba(16, 185, 129, 0.3);
+  transition: all 0.3s ease;
+}
+
+.searchInputGroup:focus-within {
+  border-color: #10b981;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+}
+
+.searchInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  color: #1f2937;
+  outline: none;
+  font-weight: 500;
+}
+
+.searchInput::placeholder {
+  color: #6b7280;
+}
+
+.searchButton {
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.searchButton:hover:not(:disabled) {
+  background: #059669;
+  transform: scale(1.05);
+}
+
+.searchButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.searchIcon {
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+/* Searching State */
+.searchingState {
+  text-align: center;
+  padding: 2rem;
+  color: #1f2937;
+}
+
+.spinner {
+  width: 2rem;
+  height: 2rem;
+  border: 3px solid rgba(16, 185, 129, 0.2);
+  border-top: 3px solid #10b981;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Results */
+.resultsContainer {
+  margin-bottom: 2rem;
+}
+
+.resultsTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.resultsList {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.songItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.songItem:last-child {
+  border-bottom: none;
+}
+
+.songItem:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.songItem.selected {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: #10b981;
+}
+
+.songThumbnail {
+  font-size: 2rem;
+  opacity: 0.8;
+  min-width: 3rem;
+  text-align: center;
+}
+
+.songInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.songTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 0.2rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.songArtist {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.songDuration {
+  font-size: 0.9rem;
+  color: #6b7280;
+  font-weight: 500;
+  min-width: 3rem;
+  text-align: center;
+}
+
+.selectIcon {
+  font-size: 1.2rem;
+  color: #10b981;
+  min-width: 2rem;
+  text-align: center;
+}
+
+/* Selected Song */
+.selectedSong {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 1.5rem;
+  border: 2px solid rgba(16, 185, 129, 0.3);
+}
+
+.selectedInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.selectedThumbnail {
+  font-size: 2.5rem;
+  opacity: 0.8;
+}
+
+.selectedDetails {
+  flex: 1;
+}
+
+.selectedTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 0.3rem 0;
+}
+
+.selectedArtist {
+  font-size: 1rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.downloadButton {
+  width: 100%;
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.downloadButton:hover {
+  background: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.3rem;
+  }
+  
+  .songItem {
+    padding: 0.8rem;
+    gap: 0.8rem;
+  }
+  
+  .songThumbnail {
+    font-size: 1.5rem;
+    min-width: 2.5rem;
+  }
+  
+  .songTitle {
+    font-size: 0.95rem;
+  }
+  
+  .songArtist {
+    font-size: 0.85rem;
+  }
+  
+  .selectedInfo {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .searchInputGroup {
+    padding: 0.2rem;
+  }
+  
+  .searchInput {
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .searchButton {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+  
+  .songItem {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .songDuration {
+    order: -1;
+    margin-left: auto;
+  }
+  
+  .downloadButton {
+    padding: 0.8rem;
+    font-size: 1rem;
+  }
+} 

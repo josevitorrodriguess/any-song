@@ -1,0 +1,244 @@
+/* Upload Component Styles */
+.uploadContainer {
+  width: 100%;
+  max-width: 500px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.dropZone {
+  border: 2px dashed #10b981;
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.dropZone:hover,
+.dropZone.active {
+  border-color: #059669;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
+}
+
+.dropContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
+}
+
+.dropText {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.supportedFormats {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.orDivider {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.orDivider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(31, 41, 55, 0.2);
+  z-index: 1;
+}
+
+.orDivider span {
+  background: rgba(160, 253, 174, 0.8);
+  padding: 0 1rem;
+  color: #1f2937;
+  font-size: 0.9rem;
+  font-weight: 600;
+  position: relative;
+  z-index: 2;
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+}
+
+.browseButton {
+  background: #1f2937;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.browseButton:hover {
+  background: #111827;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.fileInput {
+  display: none;
+}
+
+/* File Preview Styles */
+.filePreview {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 2px solid rgba(16, 185, 129, 0.3);
+}
+
+.fileInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+}
+
+.fileIcon {
+  font-size: 2rem;
+  opacity: 0.8;
+}
+
+.fileDetails {
+  flex: 1;
+}
+
+.fileName {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 0.3rem 0;
+  word-break: break-word;
+}
+
+.fileSize {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.removeButton {
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.removeButton:hover {
+  background: rgba(239, 68, 68, 0.2);
+  transform: scale(1.1);
+}
+
+.processButton {
+  text-align: center;
+}
+
+.convertButton {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 1rem 3rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.convertButton:hover {
+  background: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dropZone {
+    padding: 2rem 1rem;
+  }
+  
+  .title {
+    font-size: 1.3rem;
+  }
+  
+  .dropText {
+    font-size: 1.1rem;
+  }
+  
+  .icon {
+    font-size: 2.5rem;
+  }
+  
+  .fileInfo {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.8rem;
+  }
+  
+  .removeButton {
+    align-self: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .dropZone {
+    padding: 1.5rem 1rem;
+  }
+  
+  .browseButton {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .convertButton {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    width: 100%;
+  }
+} 

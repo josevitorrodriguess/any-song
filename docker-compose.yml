@@ -1,0 +1,85 @@
+version: '3.8'
+
+services:
+  # Database Service (PostgreSQL)
+  db:
+    image: postgres:latest
+    container_name: any_song_postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-anysong_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-anysong_password}
+      POSTGRES_DB: ${POSTGRES_DB:-anysong_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - anysong-network
+
+  # Frontend Service (Next.js)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - NEXT_PUBLIC_FIREBASE_API_KEY=AIzaSyDF4TQ9GyWE3qvytYhUN4IIydfvaylSm80
+        - NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=any-song-c2d0c.firebaseapp.com
+        - NEXT_PUBLIC_FIREBASE_PROJECT_ID=any-song-c2d0c
+        - NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=any-song-c2d0c.firebasestorage.app
+        - NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=1079650573500
+        - NEXT_PUBLIC_FIREBASE_APP_ID=1:1079650573500:web:416edb3f15325a2bcbc4b9
+        - NEXT_PUBLIC_API_URL=http://localhost:8000
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_FIREBASE_API_KEY=AIzaSyDF4TQ9GyWE3qvytYhUN4IIydfvaylSm80
+      - NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=any-song-c2d0c.firebaseapp.com
+      - NEXT_PUBLIC_FIREBASE_PROJECT_ID=any-song-c2d0c
+      - NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=any-song-c2d0c.firebasestorage.app
+      - NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=1079650573500
+      - NEXT_PUBLIC_FIREBASE_APP_ID=1:1079650573500:web:416edb3f15325a2bcbc4b9
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    depends_on:
+      - backend
+    networks:
+      - anysong-network
+
+  # Backend Service (FastAPI)
+  backend:
+    container_name: any_song_backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: on-failure
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONPATH=/app
+      - ENVIRONMENT=development
+      # Database configuration
+      - DB_HOST=db
+      - DB_NAME=${POSTGRES_DB:-anysong_db}
+      - DB_USER=${POSTGRES_USER:-anysong_user}
+      - DB_PASSWORD=${POSTGRES_PASSWORD:-anysong_password}
+      - DB_PORT=${POSTGRES_PORT:-5432}
+    volumes:
+      - ./backend/src:/app/src
+    depends_on:
+      - db
+    networks:
+      - anysong-network
+
+networks:
+  anysong-network:
+    driver: bridge
+
+volumes:
+  node_modules:
+  next_build:
+  postgres_data: 
