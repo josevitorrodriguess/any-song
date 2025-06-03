@@ -50,7 +50,7 @@ services:
     networks:
       - anysong-network
 
-  # Backend Service (FastAPI)
+  # Backend Service (Go)
   backend:
     container_name: any_song_backend
     build:
@@ -60,7 +60,6 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - PYTHONPATH=/app
       - ENVIRONMENT=development
       # Database configuration
       - DB_HOST=db
@@ -69,7 +68,7 @@ services:
       - DB_PASSWORD=${POSTGRES_PASSWORD:-anysong_password}
       - DB_PORT=${POSTGRES_PORT:-5432}
     volumes:
-      - ./backend/src:/app/src
+      - ./backend:/app
     depends_on:
       - db
     networks:
@@ -83,3 +82,4 @@ volumes:
   node_modules:
   next_build:
   postgres_data: 
+  

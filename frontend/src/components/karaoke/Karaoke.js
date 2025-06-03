@@ -54,7 +54,7 @@ export default function Karaoke() {
       <div className={styles.container}>
         <div className={styles.header}>
           <div className={styles.headerContent}>
-            <Link href="/" className={styles.logo}>
+            <Link href="/karaoke" className={styles.logo}>
               <Image
                 src="/any-song_icon.png"
                 alt="AnySong Microphone Icon"
@@ -65,7 +65,7 @@ export default function Karaoke() {
               <h1 className={styles.logoText}>AnySong</h1>
             </Link>
             <nav className={styles.nav}>
-              <Link href="/about" className={styles.navLink}>
+              <Link href="/about" className={styles.navButton}>
                 About
               </Link>
               <UserProfile />

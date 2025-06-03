@@ -12,60 +12,88 @@ Transform any song into your personal karaoke experience with AI-powered vocal s
 ## 🛠️ Tech Stack
 
 - **Frontend**: Next.js + JavaScript + CSS
-- **Backend**: FastAPI + PostgreSQL
+- **Backend**: Go + PostgreSQL
 - **AI Processing**: Python + Music.AI + Audio Libraries
 
 ## 🚦 Quick Start
 
 ### Prerequisites
-- Node.js 18+
-- Python 3.9+
-- PostgreSQL 13+
-- Music.AI API key
+- Docker
+- Docker Compose
 
 ### Installation
 ```bash
-git clone https://github.com/your-team/anysong.git
-cd anysong
+# 1. Clone the repository
+git clone <your-repo-url>
+cd any-song
+
+# 2. Set up environment variables
+cp env.example .env
+# Edit .env with your Firebase credentials
+
+# 3. Run with Docker (one command!)
 docker-compose up --build
 ``` 
 
-## Manuel Setup
+**That's it!** 🎉 
 
-### Backend
-```bash
-cd backend
-pip install -r requirements.txt
-uvicorn app.main:app --reload
-```
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:8000
+- **API Docs**: http://localhost:8000/docs
 
-### Frontend
-```bash
-cd frontend
-npm install && npm run dev
-```
+## ⚙️ Manual Setup (Development)
 
-Access: http://localhost:3000  
+### Prerequisites
+- Node.js 18+
+- Go
+- PostgreSQL 13+
+
 
 ## 📁 Project Structure
 ```bash
-anysong/
+any-song/
 ├── frontend/          # Next.js app
-├── backend/           # FastAPI server
-├── ai-processing/     # Python AI services
-└── docker/           # Docker configs
+├── backend/           # Go
+├── docker-compose.yml # Docker orchestration
+├── env.example        # Environment template
+└── DOCKER.md         # Detailed Docker guide
 ```
 
-## 🗺️ Roadmap 
-     - File upload & YouTube Scraping
-     - AI vocal separation
-     - Lyrics synchronization
-     - Voice analysis & scoring
+## 🔧 Environment Variables
 
-     
+Copy `env.example` to `.env` and configure:
+
+- **Firebase**: Get from Firebase Console
+- **Database**: Default values work with Docker
+- **API URL**: http://localhost:8000 for local dev
+
+## 🗺️ Roadmap 
+- ✅ User Authentication (Firebase)
+- ✅ File Upload & Management  
+- 🔄 AI Vocal Separation
+- 🔄 Lyrics Synchronization
+- 📋 Voice Analysis & Scoring
+
+## 🐳 Docker Commands
+
+```bash
+# Start all services
+docker-compose up --build
+
+# Stop all services  
+docker-compose down
+
+# View logs
+docker-compose logs -f
+
+# Rebuild specific service
+docker-compose up --build frontend
+```
+
+See [DOCKER.md](./DOCKER.md) for detailed Docker usage.
+
 ## 👥 Team 
 Luigi Schmitt, José Vitor and Pedro Kruta 
-     
 
 ### Made with ❤️ for music lovers everywhere 🎤
 

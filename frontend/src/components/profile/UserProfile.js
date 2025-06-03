@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/router';
 import styles from './UserProfile.module.css';
@@ -30,6 +31,11 @@ export default function UserProfile() {
     } catch (error) {
       console.error('Erro no logout:', error);
     }
+  };
+
+  const handleProfileClick = () => {
+    setIsOpen(false);
+    router.push('/profile');
   };
 
   if (!user) {
@@ -73,6 +79,12 @@ export default function UserProfile() {
             </span>
           </div>
           <div className={styles.divider}></div>
+          <button 
+            className={styles.dropdownItem}
+            onClick={handleProfileClick}
+          >
+            👤 Profile
+          </button>
           <button 
             className={styles.dropdownItem}
             onClick={handleLogout}

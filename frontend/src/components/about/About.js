@@ -1,9 +1,39 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { useAuth } from "@/contexts/AuthContext";
 import styles from "./About.module.css";
 
 export default function About() {
+  const { user, loading } = useAuth();
+
+  // Determine back button text and destination based on auth state
+  const getBackButton = () => {
+    if (loading) {
+      // While loading, show neutral text
+      return {
+        href: "/",
+        text: "Back"
+      };
+    }
+    
+    if (user) {
+      // User is logged in, send to karaoke
+      return {
+        href: "/karaoke",
+        text: "Back to Karaoke"
+      };
+    } else {
+      // User is not logged in, send to home
+      return {
+        href: "/",
+        text: "Back to Home"
+      };
+    }
+  };
+
+  const backButton = getBackButton();
+
   return (
     <>
       <Head>
@@ -28,8 +58,8 @@ export default function About() {
         <div className={styles.contentSection}>
           <div className={styles.content}>
             <nav className={styles.navigation}>
-              <Link href="/" className={styles.backButton}>
-                Back to Home
+              <Link href={backButton.href} className={styles.backButton}>
+                {backButton.text}
               </Link>
             </nav>
             
