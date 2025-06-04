@@ -58,7 +58,7 @@
 }
 
 /* Unified navigation button styles */
-.navButton {
+.navButton, .testButton {
   color: #1f2937;
   text-decoration: none;
   font-weight: 600;
@@ -78,10 +78,19 @@
   white-space: nowrap;
 }
 
-.navButton:hover {
+.navButton:hover, .testButton:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.testButton {
+  background: rgba(255, 193, 7, 0.2);
+  border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.testButton:hover {
+  background: rgba(255, 193, 7, 0.3);
 }
 
 /* Legacy navLink for backward compatibility */
@@ -134,6 +143,21 @@
   color: #374151;
   margin: 0;
   line-height: 1.5;
+}
+
+.testResult {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 2px solid rgba(16, 185, 129, 0.2);
+}
+
+.testResult p {
+  margin: 0;
+  font-weight: 600;
+  color: #1f2937;
 }
 
 /* Tabs */
