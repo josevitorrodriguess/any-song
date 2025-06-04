@@ -61,14 +61,12 @@ services:
       - "8000:8000"
     environment:
       - ENVIRONMENT=${ENVIRONMENT:-development}
-      # Database configuration
       - DB_HOST=db
       - DB_NAME=${POSTGRES_DB:-anysong_db}
       - DB_USER=${POSTGRES_USER:-anysong_user}
       - DB_PASSWORD=${POSTGRES_PASSWORD:-anysong_password}
       - DB_PORT=${POSTGRES_PORT:-5432}
-    volumes:
-      - ./backend:/app
+      - FIREBASE_CREDENTIALS_PATH=${FIREBASE_CREDENTIALS_PATH:-config/anysong-2025-firebase-adminsdk-fbsvc-a19a4428fe.json}
     depends_on:
       - db
     networks:
@@ -81,5 +79,4 @@ networks:
 volumes:
   node_modules:
   next_build:
-  postgres_data: 
-  
+  postgres_data:
