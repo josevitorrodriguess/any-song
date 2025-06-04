@@ -5,8 +5,11 @@ go 1.24.3
 require (
 	firebase.google.com/go v3.13.0+incompatible
 	github.com/gofiber/fiber/v2 v2.52.8
+	github.com/google/uuid v1.6.0
 	github.com/joho/godotenv v1.5.1
 	google.golang.org/api v0.235.0
+	gorm.io/driver/postgres v1.6.0
+	gorm.io/gorm v1.30.0
 )
 
 require (
@@ -34,7 +37,6 @@ require (
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/google/s2a-go v0.1.9 // indirect
-	github.com/google/uuid v1.6.0 // indirect
 	github.com/googleapis/enterprise-certificate-proxy v0.3.6 // indirect
 	github.com/googleapis/gax-go/v2 v2.14.2 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
@@ -75,6 +77,4 @@ require (
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20250512202823-5a2f75b736a9 // indirect
 	google.golang.org/grpc v1.72.1 // indirect
 	google.golang.org/protobuf v1.36.6 // indirect
-	gorm.io/driver/postgres v1.6.0 // indirect
-	gorm.io/gorm v1.30.0 // indirect
 )

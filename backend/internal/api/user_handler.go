@@ -31,7 +31,7 @@ func (api *API) SignInHandler(c *fiber.Ctx) error {
 			"error": "Token inválido",
 		})
 	}
-	
+
 	userEmail := decodedToken.Claims["email"].(string)
 
 	user, err := api.UserService.GetUserByEmail(userEmail)
@@ -40,7 +40,7 @@ func (api *API) SignInHandler(c *fiber.Ctx) error {
 			"error": "Erro ao verificar usuário",
 		})
 	}
-	
+
 	if user == nil {
 		newUser := &models.User{
 			Email:          userEmail,
@@ -48,7 +48,7 @@ func (api *API) SignInHandler(c *fiber.Ctx) error {
 			ProfilePicture: decodedToken.Claims["picture"].(string),
 			IsActive:       true,
 		}
-		
+
 		if err := api.UserService.CreateUser(newUser); err != nil {
 			return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 				"error": "Erro ao criar usuário",
@@ -85,4 +85,29 @@ func (api *API) LogoutHandler(c *fiber.Ctx) error {
 	return c.JSON(fiber.Map{
 		"message": "Logout realizado com sucesso",
 	})
+}
+
+
+func (api *API) FindUserByNameHandler(c *fiber.Ctx) error {
+	email := c.Params("username")
+	if email == "" {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": "Nome é obrigatório",
+		})
+	}
+
+	user, err := api.UserService.GetUserByEmail(email)
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"error": "Erro ao buscar usuário",
+		})
+	}
+
+	if user == nil {
+		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
+			"error": "Usuário não encontrado",
+		})
+	}
+
+	return c.JSON(user)
 }

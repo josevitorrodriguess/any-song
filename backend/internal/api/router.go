@@ -14,16 +14,13 @@ func (api *API) SetupRoutes() {
 		AllowCredentials: true,
 	}))
 
-	// Auth routes
-	authGroup := api.Router.Group("/auth")
-	authGroup.Post("/signin", api.SignInHandler)
-	authGroup.Post("/logout", api.AuthMiddleware(), api.LogoutHandler)
+	api.Router.Post("/signin", api.SignInHandler)
+	api.Router.Post("/logout", api.AuthMiddleware(), api.LogoutHandler)
 
-	// Protected routes
-	protectedGroup := api.Router.Group("/api", api.AuthMiddleware())
-	protectedGroup.Get("/protected", api.ProtectedHandler)
-	
-	// Health check
+	userRoutes := api.Router.Group("/user", api.AuthMiddleware())
+	userRoutes.Get("/:username", api.FindUserByNameHandler)
+
+	api.Router.Get("/protected", api.AuthMiddleware(), api.ProtectedHandler)
 	api.Router.Get("/health", func(c *fiber.Ctx) error {
 		return c.JSON(fiber.Map{"status": "ok"})
 	})
