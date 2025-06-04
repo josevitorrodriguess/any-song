@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	godotenv.Load(".env.local")
+	godotenv.Load()
 	app := fiber.New()
 
 	db := postgres.ConnectDatabase()
@@ -18,7 +18,7 @@ func main() {
 
 	api.SetupRoutes()
 
-	if err := app.Listen(":3000"); err != nil {
+	if err := app.Listen(":8000"); err != nil {
 		panic("Failed to start server: " + err.Error())
 	}
 
