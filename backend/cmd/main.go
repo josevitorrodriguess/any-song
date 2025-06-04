@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	godotenv.Load(".env.local")
+	godotenv.Load()
 	app := fiber.New()
 
 	db := postgres.ConnectDatabase()
