@@ -15,6 +15,7 @@ func GetFireBaseApp() (*firebase.App, error) {
 		return nil, fmt.Errorf("FIREBASE_CREDENTIALS_PATH environment variable is not set")
 	}
 
+	
 	opt := option.WithCredentialsFile(path)
 
 	app, err := firebase.NewApp(context.Background(), nil, opt)
