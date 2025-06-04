@@ -7,21 +7,25 @@ import (
 	"github.com/josevitorrodriguess/any-song/backend/internal/models"
 )
 
+type SignInRequest struct {
+	IdToken string `json:"idToken"`
+}
+
 func (api *API) SignInHandler(c *fiber.Ctx) error {
-	var idToken string
-	if err := c.BodyParser(&idToken); err != nil {
+	var req SignInRequest
+	if err := c.BodyParser(&req); err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "Dados inválidos",
 		})
 	}
 
-	if idToken == "" {
+	if req.IdToken == "" {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "Token de autenticação é obrigatório",
 		})
 	}
 
-	decodedToken, err := api.Auth.VerifyIDToken(context.Background(), idToken)
+	decodedToken, err := api.Auth.VerifyIDToken(context.Background(), req.IdToken)
 	if err != nil {
 		return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
 			"error": "Token inválido",
@@ -46,6 +50,12 @@ func (api *API) SignInHandler(c *fiber.Ctx) error {
 
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"valid": true,
+		"user": fiber.Map{
+			"uid":     decodedToken.UID,
+			"email":   userEmail,
+			"name":    decodedToken.Claims["name"],
+			"picture": decodedToken.Claims["picture"],
+		},
 	})
 }
 
