@@ -15,7 +15,6 @@ export default function Karaoke() {
   const [activeTab, setActiveTab] = useState('upload');
   const [uploadedFile, setUploadedFile] = useState(null);
   const [selectedSong, setSelectedSong] = useState(null);
-  const [testResult, setTestResult] = useState(null);
 
   // Redirecionar para home se não estiver logado
   if (!loading && !user) {
@@ -41,24 +40,6 @@ export default function Karaoke() {
   const handleSongSelect = (song) => {
     setSelectedSong(song);
     setUploadedFile(null); // Clear upload
-  };
-
-  // Função para testar o backend
-  const testBackendConnection = async () => {
-    try {
-      setTestResult('Testing...');
-      const response = await authenticatedFetch('/api/protected');
-      
-      if (response.ok) {
-        const data = await response.json();
-        setTestResult(`✅ Backend conectado! Mensagem: ${data.message}`);
-      } else {
-        setTestResult('❌ Erro na resposta do backend');
-      }
-    } catch (error) {
-      console.error('Erro ao testar backend:', error);
-      setTestResult(`❌ Erro: ${error.message}`);
-    }
   };
 
   return (
@@ -87,12 +68,6 @@ export default function Karaoke() {
               <Link href="/about" className={styles.navButton}>
                 About
               </Link>
-              <button 
-                onClick={testBackendConnection}
-                className={styles.testButton}
-              >
-                🔧 Test Backend
-              </button>
               <UserProfile />
             </nav>
           </div>
@@ -105,11 +80,6 @@ export default function Karaoke() {
               <p className={styles.subtitle}>
                 Upload your audio file or search for any song to transform it into karaoke
               </p>
-              {testResult && (
-                <div className={styles.testResult}>
-                  <p>{testResult}</p>
-                </div>
-              )}
             </div>
 
             <div className={styles.tabContainer}>

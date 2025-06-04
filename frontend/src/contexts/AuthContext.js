@@ -20,6 +20,7 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [backendToken, setBackendToken] = useState(null);
+  const [backendAuthenticated, setBackendAuthenticated] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -39,22 +40,25 @@ export function AuthProvider({ children }) {
 
           if (response.ok) {
             const userData = await response.json();
-            console.log('Usuário autenticado no backend:', userData);
             setBackendToken(idToken);
             setUser(user);
+            setBackendAuthenticated(true);
           } else {
             console.error('Erro ao autenticar no backend');
             setUser(null);
             setBackendToken(null);
+            setBackendAuthenticated(false);
           }
         } catch (error) {
           console.error('Erro ao verificar usuário no backend:', error);
           setUser(null);
           setBackendToken(null);
+          setBackendAuthenticated(false);
         }
       } else {
         setUser(null);
         setBackendToken(null);
+        setBackendAuthenticated(false);
       }
       setLoading(false);
     });
@@ -65,6 +69,7 @@ export function AuthProvider({ children }) {
   const signInWithGoogle = async () => {
     try {
       setLoading(true);
+      setBackendAuthenticated(false);
       const result = await signInWithPopup(auth, googleProvider);
       
       // O onAuthStateChanged já vai lidar com o backend
@@ -94,7 +99,6 @@ export function AuthProvider({ children }) {
       await signOut(auth);
       setBackendToken(null);
     } catch (error) {
-      console.error('Erro no logout:', error);
       throw error;
     }
   };
@@ -121,6 +125,7 @@ export function AuthProvider({ children }) {
     user,
     loading,
     backendToken,
+    backendAuthenticated,
     signInWithGoogle,
     logout,
     authenticatedFetch

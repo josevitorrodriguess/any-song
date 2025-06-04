@@ -31,6 +31,7 @@ func (api *API) SignInHandler(c *fiber.Ctx) error {
 			"error": "Token inválido",
 		})
 	}
+	
 	userEmail := decodedToken.Claims["email"].(string)
 
 	user, err := api.UserService.GetUserByEmail(userEmail)
@@ -39,13 +40,20 @@ func (api *API) SignInHandler(c *fiber.Ctx) error {
 			"error": "Erro ao verificar usuário",
 		})
 	}
+	
 	if user == nil {
-		api.UserService.CreateUser(&models.User{
+		newUser := &models.User{
 			Email:          userEmail,
 			Name:           decodedToken.Claims["name"].(string),
 			ProfilePicture: decodedToken.Claims["picture"].(string),
 			IsActive:       true,
-		})
+		}
+		
+		if err := api.UserService.CreateUser(newUser); err != nil {
+			return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+				"error": "Erro ao criar usuário",
+			})
+		}
 	}
 
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{

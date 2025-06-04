@@ -23,14 +23,14 @@ type DatabaseConfig struct {
 }
 
 func loadDBConfig() *DatabaseConfig {
-	port, _ := strconv.Atoi(getEnv("DB_PORT", "5432"))
+	port, _ := strconv.Atoi(getEnv("DB_PORT", "5433"))
 
 	return &DatabaseConfig{
 		Host:     getEnv("DB_HOST", "localhost"),
 		Port:     port,
-		User:     getEnv("DB_USER", "postgres"),
-		Password: getEnv("DB_PASSWORD", ""),
-		DBName:   getEnv("DB_NAME", "myapp"),
+		User:     getEnv("DB_USER", "anysong_user"),
+		Password: getEnv("DB_PASSWORD", "anysong_password"),
+		DBName:   getEnv("DB_NAME", "anysong_db"),
 		SSLMode:  getEnv("DB_SSL_MODE", "disable"),
 	}
 }

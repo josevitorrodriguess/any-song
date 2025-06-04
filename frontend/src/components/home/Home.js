@@ -3,31 +3,37 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useAuth } from "@/contexts/AuthContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Home.module.css";
 
 export default function Home() {
-  const { user, signInWithGoogle } = useAuth();
+  const { user, signInWithGoogle, backendAuthenticated, loading } = useAuth();
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
+  const [isSigningIn, setIsSigningIn] = useState(false);
+
+  // Redirecionar para karaoke quando backend auth for completado
+  useEffect(() => {
+    if (backendAuthenticated && user && isSigningIn) {
+      router.push('/karaoke');
+      setIsSigningIn(false);
+    }
+  }, [backendAuthenticated, user, isSigningIn, router]);
 
   const handleJoinNow = async () => {
-    if (user) {
+    if (user && backendAuthenticated) {
       // Se já está logado, vai direto para karaoke
       router.push('/karaoke');
       return;
     }
 
     try {
-      setLoading(true);
+      setIsSigningIn(true);
       await signInWithGoogle();
-      // Após login bem-sucedido, redireciona para karaoke
-      router.push('/karaoke');
+      // O useEffect acima vai redirecionar quando backendAuthenticated for true
     } catch (error) {
       console.error('Erro no login:', error);
       alert('Erro ao fazer login. Tente novamente.');
-    } finally {
-      setLoading(false);
+      setIsSigningIn(false);
     }
   };
 
@@ -61,11 +67,11 @@ export default function Home() {
               <button 
                 onClick={handleJoinNow}
                 className={styles.primaryButton}
-                disabled={loading}
+                disabled={isSigningIn || loading}
               >
-                {loading ? (
+                {isSigningIn ? (
                   <span className={styles.loadingSpinner}>⏳</span>
-                ) : user ? (
+                ) : user && backendAuthenticated ? (
                   'Join Now'
                 ) : (
                   'Sign In'

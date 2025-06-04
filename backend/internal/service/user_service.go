@@ -29,6 +29,11 @@ func (s *UserService) UserExists(email string) (bool, error) {
 func (s *UserService) GetUserByEmail(email string) (*models.User, error) {
 	var user models.User
 	if err := s.DB.Where("email = ?", email).First(&user).Error; err != nil {
+		if err == gorm.ErrRecordNotFound {
+			// Usuário não encontrado - retorna nil sem erro
+			return nil, nil
+		}
+		// Outros erros são retornados
 		return nil, err
 	}
 	return &user, nil
