@@ -1,6 +1,8 @@
 package service
 
 import (
+	"fmt"
+
 	"github.com/josevitorrodriguess/any-song/backend/internal/models"
 	"gorm.io/gorm"
 )
@@ -18,13 +20,6 @@ func NewUserService(db *gorm.DB) *UserService {
 func (s *UserService) CreateUser(user *models.User) error {
 	return s.DB.Create(user).Error
 }
-func (s *UserService) UserExists(email string) (bool, error) {
-	var count int64
-	if err := s.DB.Model(&models.User{}).Where("email = ?", email).Count(&count).Error; err != nil {
-		return false, err
-	}
-	return count > 0, nil
-}
 
 func (s *UserService) GetUserByEmail(email string) (*models.User, error) {
 	var user models.User
@@ -34,6 +29,17 @@ func (s *UserService) GetUserByEmail(email string) (*models.User, error) {
 			return nil, nil
 		}
 		// Outros erros são retornados
+		return nil, err
+	}
+	return &user, nil
+}
+
+func (s *UserService) GetUserByName(name string) (*models.User, error) {
+	var user models.User
+	if err := s.DB.Where("name = ?", name).First(&user).Error; err != nil {
+		if err == gorm.ErrRecordNotFound {
+			return nil, fmt.Errorf("usuário com nome '%s' não encontrado", name)
+		}
 		return nil, err
 	}
 	return &user, nil
