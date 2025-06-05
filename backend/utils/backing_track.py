@@ -6,7 +6,7 @@ dotenv.load_dotenv()
 
 client = MusicAiClient(api_key=os.getenv("MUSICAI_API_KEY"))
 
-def gen_backing_track(song_path):
+def gen_backing_track(song_path: str):
     try:
         print(f"Iniciando processamento de: {song_path}")
         

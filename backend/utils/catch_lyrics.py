@@ -4,7 +4,7 @@ from musicxmatch_api import MusixMatchAPI
 import os
 api = MusixMatchAPI()
 
-def lyrics(music_name: str) -> json: 
+def lyrics(music_name: str): 
     search = api.search_tracks(music_name)
     track_id = search['message']['body']['track_list'][0]['track']['track_id']
     lyrics = api.get_track_lyrics(track_id)

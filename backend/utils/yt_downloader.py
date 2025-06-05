@@ -1,7 +1,7 @@
 import yt_dlp
 import os
 
-def search(nome_musica, pasta_saida="./audios/songs"):
+def search(nome_musica: str, pasta_saida: str = "./audios/songs"):
     # Verifica se a pasta existe, se não, cria
     if not os.path.exists(pasta_saida):
         os.makedirs(pasta_saida)
