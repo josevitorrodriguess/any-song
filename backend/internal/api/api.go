@@ -12,10 +12,11 @@ import (
 )
 
 type API struct {
-	Firebase    *firebase.App
-	Auth        *auth.Client
-	UserService *service.UserService
-	Router      *fiber.App
+	Firebase      *firebase.App
+	Auth          *auth.Client
+	UserService   *service.UserService
+	ArtistService *service.ArtistService
+	Router        *fiber.App
 }
 
 func InitApi(db *gorm.DB, router *fiber.App) *API {
@@ -30,11 +31,13 @@ func InitApi(db *gorm.DB, router *fiber.App) *API {
 	}
 
 	userService := service.NewUserService(db)
+	artistService := service.NewArtistService(db)
 
 	return &API{
-		Firebase:    app,
-		Auth:        authClient,
-		UserService: userService,
-		Router:      router,
+		Firebase:      app,
+		Auth:          authClient,
+		UserService:   userService,
+		ArtistService: artistService,
+		Router:        router,
 	}
 }
