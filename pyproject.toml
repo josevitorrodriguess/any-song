@@ -1,0 +1,148 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "any-song"
+version = "0.1.0"
+description = "Aplicação para download, manipulação e análise de músicas"
+authors = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+keywords = ["music", "audio", "lyrics", "youtube", "backing-track"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Sound/Audio",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+dependencies = [
+    # Para download de vídeos/áudios do YouTube
+    "yt-dlp>=2023.7.6",
+    
+    # Para busca de letras
+    "musicxmatch-api>=0.1.0",
+    
+    # Para criação de backing tracks
+    "musicai-sdk>=1.0.0",
+    
+    # Para manipulação de variáveis de ambiente
+    "python-dotenv>=1.0.0",
+    
+    # Para requisições HTTP
+    "requests>=2.31.0",
+    
+    # Bibliotecas padrão já incluídas no Python
+    # json, os são built-in
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "black>=23.0",
+    "flake8>=6.0",
+    "mypy>=1.0",
+    "pre-commit>=3.0",
+]
+
+audio = [
+    # Para processamento de áudio avançado
+    "librosa>=0.10.0",
+    "soundfile>=0.12.0",
+    "numpy>=1.21.0",
+]
+
+web = [
+    # Para criação de API web
+    "fastapi>=0.100.0",
+    "uvicorn[standard]>=0.23.0",
+    "pydantic>=2.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/any-song"
+Documentation = "https://any-song.readthedocs.io/"
+Repository = "https://github.com/yourusername/any-song.git"
+Issues = "https://github.com/yourusername/any-song/issues"
+
+[project.scripts]
+any-song = "any_song.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["backend*", "utils*"]
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = ["E203", "W503"]
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q --strict-markers"
+testpaths = [
+    "tests",
+]
+pythonpath = [
+    ".",
+    "backend",
+]
+
+[tool.coverage.run]
+source = ["backend"]
+omit = [
+    "*/tests/*",
+    "*/venv/*",
+    "*/__pycache__/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
