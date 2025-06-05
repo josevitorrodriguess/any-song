@@ -58,10 +58,12 @@ func ConnectDatabase() *gorm.DB {
 	if err != nil {
 		log.Fatalf("Erro ao conectar com PostgreSQL: %v", err)
 	}
-	
+
 	if err = runMigrations(db); err != nil {
 		log.Fatalf("Erro ao executar migrações: %v", err)
 	}
+
+	seedGenres(db)
 
 	sqlDB, err := db.DB()
 	if err != nil {
@@ -89,8 +91,24 @@ func runMigrations(db *gorm.DB) error {
 	log.Println("Executando migrações...")
 	if err := db.AutoMigrate(
 		models.User{},
+		models.Genre{},
+		models.Artist{},
+		models.Song{},
 	); err != nil {
 		return fmt.Errorf("erro ao executar migrações: %v", err)
 	}
 	return nil
+}
+
+func seedGenres(db *gorm.DB) {
+	genres := []string{
+		"Pop", "Rock", "Hip Hop", "Rap", "Sertanejo", "Funk", "MPB", "Eletrônica", "Clássica", "Reggae",
+		"Samba", "Pagode", "Forró", "Axé", "Blues", "Country", "Gospel", "Indie", "K-Pop", "Trap",
+		"R&B", "Soul", "Disco", "Punk", "Metal", "Hardcore", "Folk", "Bossa Nova", "Lo-fi", "House",
+		"Techno", "Trance", "Drum and Bass", "Dubstep", "Chillout", "Ambient", "Instrumental", "Opera", "World",
+		"Latin", "Reggaeton", "Cumbia", "Ska", "Grunge", "Emo", "New Wave", "Synthpop", "Experimental",
+	}
+	for _, name := range genres {
+		db.FirstOrCreate(&models.Genre{}, models.Genre{Name: name})
+	}
 }

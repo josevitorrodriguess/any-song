@@ -44,3 +44,30 @@ func (s *UserService) GetUserByName(name string) (*models.User, error) {
 	}
 	return &user, nil
 }
+
+func (s *UserService) GetUserByFirebaseUID(firebaseUID string) (*models.User, error) {
+	var user models.User
+	if err := s.DB.Where("firebase_uid = ?", firebaseUID).First(&user).Error; err != nil {
+		if err == gorm.ErrRecordNotFound {
+			return nil, fmt.Errorf("usuário com Firebase UID '%s' não encontrado", firebaseUID)
+		}
+		return nil, err
+	}
+	return &user, nil
+}
+
+func (s *UserService) UpdateUser(user *models.User) error {
+	return s.DB.Model(&models.User{}).Where("id = ?", user.FirebaseUID).Updates(user).Error
+}
+
+func (s *UserService) DeleteUser(firebaseUID string) error {
+	var user models.User
+	if err := s.DB.Where("firebase_uid = ?", firebaseUID).First(&user).Error; err != nil {
+		if err == gorm.ErrRecordNotFound {
+			return fmt.Errorf("usuário com Firebase UID '%s' não encontrado", firebaseUID)
+		}
+		return err
+	}
+
+	return s.DB.Delete(&user).Error
+}
