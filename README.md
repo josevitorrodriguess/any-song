@@ -95,5 +95,7 @@ See [DOCKER.md](./DOCKER.md) for detailed Docker usage.
 ## 👥 Team 
 Luigi Schmitt, José Vitor and Pedro Kruta 
 
+📧 **Contact**: [contact.anysong@gmail.com](mailto:contact.anysong@gmail.com)
+
 ### Made with ❤️ for music lovers everywhere 🎤
 

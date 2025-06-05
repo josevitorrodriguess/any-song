@@ -19,10 +19,47 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [backendToken, setBackendToken] = useState(null);
+  const [backendAuthenticated, setBackendAuthenticated] = useState(false);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        try {
+          // Obter o token do Firebase
+          const idToken = await user.getIdToken();
+          
+          // Enviar para o backend Go
+          const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/auth/signin`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ idToken }),
+          });
+
+          if (response.ok) {
+            const userData = await response.json();
+            setBackendToken(idToken);
+            setUser(user);
+            setBackendAuthenticated(true);
+          } else {
+            console.error('Erro ao autenticar no backend');
+            setUser(null);
+            setBackendToken(null);
+            setBackendAuthenticated(false);
+          }
+        } catch (error) {
+          console.error('Erro ao verificar usuário no backend:', error);
+          setUser(null);
+          setBackendToken(null);
+          setBackendAuthenticated(false);
+        }
+      } else {
+        setUser(null);
+        setBackendToken(null);
+        setBackendAuthenticated(false);
+      }
       setLoading(false);
     });
 
@@ -32,27 +69,10 @@ export function AuthProvider({ children }) {
   const signInWithGoogle = async () => {
     try {
       setLoading(true);
+      setBackendAuthenticated(false);
       const result = await signInWithPopup(auth, googleProvider);
       
-      // Enviar o token para o backend
-      const idToken = await result.user.getIdToken();
-      
-      // Fazer a requisição para o backend
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/users/auth/google-signin`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ idToken }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Erro ao autenticar no backend');
-      }
-
-      const userData = await response.json();
-      console.log('Usuário autenticado:', userData);
-      
+      // O onAuthStateChanged já vai lidar com o backend
       return result.user;
     } catch (error) {
       console.error('Erro no login:', error);
@@ -64,18 +84,51 @@ export function AuthProvider({ children }) {
 
   const logout = async () => {
     try {
+      // Fazer logout no backend primeiro
+      if (backendToken) {
+        await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/auth/logout`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${backendToken}`,
+            'Content-Type': 'application/json',
+          },
+        });
+      }
+      
+      // Depois fazer logout no Firebase
       await signOut(auth);
+      setBackendToken(null);
     } catch (error) {
-      console.error('Erro no logout:', error);
       throw error;
     }
+  };
+
+  // Função para fazer requisições autenticadas
+  const authenticatedFetch = async (url, options = {}) => {
+    if (!backendToken) {
+      throw new Error('Usuário não autenticado');
+    }
+
+    const headers = {
+      'Authorization': `Bearer ${backendToken}`,
+      'Content-Type': 'application/json',
+      ...options.headers,
+    };
+
+    return fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}${url}`, {
+      ...options,
+      headers,
+    });
   };
 
   const value = {
     user,
     loading,
+    backendToken,
+    backendAuthenticated,
     signInWithGoogle,
-    logout
+    logout,
+    authenticatedFetch
   };
 
   return (

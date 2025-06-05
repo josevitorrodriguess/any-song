@@ -10,7 +10,7 @@ import UserProfile from '@/components/profile/UserProfile';
 import styles from './Karaoke.module.css';
 
 export default function Karaoke() {
-  const { user, loading } = useAuth();
+  const { user, loading, authenticatedFetch } = useAuth();
   const router = useRouter();
   const [activeTab, setActiveTab] = useState('upload');
   const [uploadedFile, setUploadedFile] = useState(null);
