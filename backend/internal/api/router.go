@@ -22,6 +22,14 @@ func (api *API) SetupRoutes() {
 	userRoutes.Put("/update", api.UpdateUserHandler)
 	userRoutes.Delete("/deleteAccount", api.DeleteUserHandler)
 
+	artistRoutes := api.Router.Group("/artist")
+	artistRoutes.Post("/create", api.CreateArtistHandler)
+	artistRoutes.Get("/search", api.SearchArtistsHandler)
+	artistRoutes.Get("/id/:id", api.GetArtistByIDHandler)
+	artistRoutes.Get("/", api.GetAllArtistsHandler)
+	artistRoutes.Put("/update", api.UpdateArtistHandler)
+	artistRoutes.Delete("/delete/:id", api.DeleteArtistHandler)
+
 	api.Router.Get("/protected", api.AuthMiddleware(), api.ProtectedHandler)
 	api.Router.Get("/health", func(c *fiber.Ctx) error {
 		return c.JSON(fiber.Map{"status": "ok"})
