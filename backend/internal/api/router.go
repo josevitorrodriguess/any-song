@@ -19,6 +19,8 @@ func (api *API) SetupRoutes() {
 
 	userRoutes := api.Router.Group("/user", api.AuthMiddleware())
 	userRoutes.Get("/:username", api.FindUserByNameHandler)
+	userRoutes.Put("/update", api.UpdateUserHandler)
+	userRoutes.Delete("/deleteAccount", api.DeleteUserHandler)
 
 	api.Router.Get("/protected", api.AuthMiddleware(), api.ProtectedHandler)
 	api.Router.Get("/health", func(c *fiber.Ctx) error {

@@ -87,7 +87,6 @@ func (api *API) LogoutHandler(c *fiber.Ctx) error {
 	})
 }
 
-
 func (api *API) FindUserByNameHandler(c *fiber.Ctx) error {
 	email := c.Params("username")
 	if email == "" {
@@ -110,4 +109,60 @@ func (api *API) FindUserByNameHandler(c *fiber.Ctx) error {
 	}
 
 	return c.JSON(user)
+}
+
+func (api *API) UpdateUserHandler(c *fiber.Ctx) error {
+	var user models.User
+	if err := c.BodyParser(&user); err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": "Dados inválidos",
+		})
+	}
+
+	if user.FirebaseUID == "" {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": "Firebase UID é obrigatório",
+		})
+	}
+
+	existingUser, err := api.UserService.GetUserByFirebaseUID(user.FirebaseUID)
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"error": "Erro ao buscar usuário",
+		})
+	}
+
+	if existingUser == nil {
+		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
+			"error": "Usuário não encontrado",
+		})
+	}
+
+	if err := api.UserService.UpdateUser(&user); err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"error": err,
+		})
+	}
+
+	return c.JSON(user)
+}
+
+func (api *API) DeleteUserHandler(c *fiber.Ctx) error {
+	firebaseUID := c.Params("firebaseUID")
+	if firebaseUID == "" {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": "Firebase UID é obrigatório",
+		})
+	}
+
+	err := api.UserService.DeleteUser(firebaseUID)
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"error": err,
+		})
+	}
+
+	return c.JSON(fiber.Map{
+		"message": "Usuário deletado com sucesso",
+	})
 }
