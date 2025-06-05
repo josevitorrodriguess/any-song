@@ -2,6 +2,7 @@ package api
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/josevitorrodriguess/any-song/backend/internal/models"
@@ -34,15 +35,38 @@ func (api *API) SignInHandler(c *fiber.Ctx) error {
 
 	userEmail := decodedToken.Claims["email"].(string)
 
-	user, err := api.UserService.GetUserByEmail(userEmail)
-	if err != nil {
+	// Primeiro, tenta buscar pelo Firebase UID
+	user, err := api.UserService.GetUserByFirebaseUID(decodedToken.UID)
+	if err != nil && err.Error() != fmt.Sprintf("usuário com Firebase UID '%s' não encontrado", decodedToken.UID) {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"error": "Erro ao verificar usuário",
+			"error": "Erro ao verificar usuário por Firebase UID",
 		})
 	}
 
+	// Se não encontrou pelo Firebase UID, tenta buscar pelo email
+	if user == nil {
+		user, err = api.UserService.GetUserByEmail(userEmail)
+		if err != nil {
+			return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+				"error": "Erro ao verificar usuário por email",
+			})
+		}
+
+		// Se encontrou pelo email mas não tem Firebase UID, atualiza
+		if user != nil && user.FirebaseUID == "" {
+			user.FirebaseUID = decodedToken.UID
+			if err := api.UserService.UpdateUser(user); err != nil {
+				return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+					"error": "Erro ao atualizar Firebase UID do usuário",
+				})
+			}
+		}
+	}
+
+	// Se ainda não existe, cria um novo usuário
 	if user == nil {
 		newUser := &models.User{
+			FirebaseUID:    decodedToken.UID,
 			Email:          userEmail,
 			Name:           decodedToken.Claims["name"].(string),
 			ProfilePicture: decodedToken.Claims["picture"].(string),
@@ -54,6 +78,7 @@ func (api *API) SignInHandler(c *fiber.Ctx) error {
 				"error": "Erro ao criar usuário",
 			})
 		}
+		user = newUser
 	}
 
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{

@@ -57,7 +57,7 @@ func (s *UserService) GetUserByFirebaseUID(firebaseUID string) (*models.User, er
 }
 
 func (s *UserService) UpdateUser(user *models.User) error {
-	return s.DB.Model(&models.User{}).Where("id = ?", user.FirebaseUID).Updates(user).Error
+	return s.DB.Model(&models.User{}).Where("firebase_uid = ?", user.FirebaseUID).Updates(user).Error
 }
 
 func (s *UserService) DeleteUser(firebaseUID string) error {

@@ -30,7 +30,7 @@ export function AuthProvider({ children }) {
           const idToken = await user.getIdToken();
           
           // Enviar para o backend Go
-          const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/auth/signin`, {
+          const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/signin`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ export function AuthProvider({ children }) {
     try {
       // Fazer logout no backend primeiro
       if (backendToken) {
-        await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/auth/logout`, {
+        await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/logout`, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${backendToken}`,

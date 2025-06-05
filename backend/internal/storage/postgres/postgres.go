@@ -89,11 +89,18 @@ func TestConnection(db *gorm.DB) error {
 
 func runMigrations(db *gorm.DB) error {
 	log.Println("Executando migrações...")
+	
+	// Drop existing tables in reverse order to avoid foreign key constraints
+	if err := db.Migrator().DropTable(&models.Song{}, &models.Artist{}, &models.Genre{}, &models.User{}); err != nil {
+		return fmt.Errorf("erro ao dropar tabelas: %v", err)
+	}
+
+	// Recreate tables with new schema
 	if err := db.AutoMigrate(
-		models.User{},
-		models.Genre{},
-		models.Artist{},
-		models.Song{},
+		&models.User{},
+		&models.Genre{},
+		&models.Artist{},
+		&models.Song{},
 	); err != nil {
 		return fmt.Errorf("erro ao executar migrações: %v", err)
 	}
