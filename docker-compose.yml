@@ -20,6 +20,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      no_cache: false
       args:
         - NEXT_PUBLIC_FIREBASE_API_KEY=${NEXT_PUBLIC_FIREBASE_API_KEY}
         - NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=${NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN}
@@ -29,6 +30,7 @@ services:
         - NEXT_PUBLIC_FIREBASE_APP_ID=${NEXT_PUBLIC_FIREBASE_APP_ID}
         - NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=${NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID}
         - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://localhost:8000}
+    command: sh -c "npm install && npm run dev"
     ports:
       - "3000:3000"
     environment:
@@ -43,8 +45,8 @@ services:
       - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://localhost:8000}
     volumes:
       - ./frontend:/app
-      - /app/node_modules
-      - /app/.next
+      - frontend_node_modules:/app/node_modules
+      - frontend_next:/app/.next
     depends_on:
       - backend
     networks:
@@ -77,6 +79,6 @@ networks:
     driver: bridge
 
 volumes:
-  node_modules:
-  next_build:
+  frontend_node_modules:
+  frontend_next:
   postgres_data:
