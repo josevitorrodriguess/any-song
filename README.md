@@ -1,4 +1,8 @@
-# 🎤 AnySong - Universal Karaoke Platform
+<div align="center">
+  <img src="https://i.imgur.com/t3xitPo.png" alt="AnySong Demo" width="400" height="170" style="margin-bottom: -30px;">
+</div>
+
+# Universal Karaoke Platform
 
 Transform any song into your personal karaoke experience with AI-powered vocal separation and intelligent lyrics synchronization.
 
