@@ -60,7 +60,18 @@ export default function Home() {
         
         <div className={styles.contentSection}>
           <div className={styles.content}>
-            <h1 className={styles.title}>NO MORE LIMITS</h1>
+            <div className={styles.logoSection}>
+              <div className={styles.mainLogo}>
+                <Image
+                  src="/any-song_icon.png"
+                  alt="AnySong Microphone Icon"
+                  width={120}
+                  height={120}
+                  className={styles.logoIcon}
+                />
+                <h1 className={styles.logoText}>AnySong</h1>
+              </div>
+            </div>
             <p className={styles.subtitle}>Transform any song into Karaoke</p>
             
             <div className={styles.buttonGroup}>

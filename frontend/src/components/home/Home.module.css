@@ -42,6 +42,46 @@
   color: white;
 }
 
+.logoSection {
+  margin: 0 0 2rem 0;
+}
+
+.mainLogo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0rem;
+  margin-bottom: 1rem;
+}
+
+.logoIcon {
+  transition: all 0.3s ease;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  animation: pulse 2s ease-in-out infinite alternate;
+}
+
+.logoText {
+  font-family: 'Inknut Antiqua', serif;
+  font-size: 4.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 0;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
 .title {
   font-size: 3.5rem;
   font-weight: 900;
@@ -151,6 +191,15 @@
     padding: 2rem 1rem;
   }
   
+  .logoIcon {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .logoText {
+    font-size: 3.5rem;
+  }
+  
   .title {
     font-size: 2.5rem;
   }
@@ -167,6 +216,20 @@
 }
 
 @media (max-width: 480px) {
+  .mainLogo {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .logoIcon {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .logoText {
+    font-size: 2.8rem;
+  }
+  
   .title {
     font-size: 2rem;
   }
