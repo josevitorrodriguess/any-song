@@ -29,6 +29,8 @@ export function AuthProvider({ children }) {
           // Obter o token do Firebase
           const idToken = await user.getIdToken();
           
+          console.log('🔑 Token do Firebase obtido, enviando para backend...');
+          
           // Enviar para o backend Go
           const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/signin`, {
             method: 'POST',
@@ -38,24 +40,38 @@ export function AuthProvider({ children }) {
             body: JSON.stringify({ idToken }),
           });
 
+          console.log('📡 Resposta do backend recebida:', response.status, response.statusText);
+
           if (response.ok) {
-            const userData = await response.json();
-            setBackendToken(idToken);
-            setUser(user);
-            setBackendAuthenticated(true);
+            const responseText = await response.text();
+            console.log('📄 Texto bruto da resposta:', responseText);
+            
+            try {
+              const userData = JSON.parse(responseText);
+              console.log('✅ JSON parseado com sucesso:', userData);
+              setBackendToken(idToken);
+              setUser(user);
+              setBackendAuthenticated(true);
+            } catch (parseError) {
+              console.error('❌ Erro ao fazer parse do JSON:', parseError);
+              console.error('📄 Resposta que causou erro:', responseText);
+              throw parseError;
+            }
           } else {
-            console.error('Erro ao autenticar no backend');
+            const errorText = await response.text();
+            console.error('❌ Erro na resposta do backend:', response.status, errorText);
             setUser(null);
             setBackendToken(null);
             setBackendAuthenticated(false);
           }
         } catch (error) {
-          console.error('Erro ao verificar usuário no backend:', error);
+          console.error('💥 Erro geral na autenticação:', error);
           setUser(null);
           setBackendToken(null);
           setBackendAuthenticated(false);
         }
       } else {
+        console.log('👤 Usuário não está logado');
         setUser(null);
         setBackendToken(null);
         setBackendAuthenticated(false);
@@ -70,12 +86,14 @@ export function AuthProvider({ children }) {
     try {
       setLoading(true);
       setBackendAuthenticated(false);
+      console.log('🚀 Iniciando login com Google...');
       const result = await signInWithPopup(auth, googleProvider);
+      console.log('✅ Login com Google bem-sucedido');
       
       // O onAuthStateChanged já vai lidar com o backend
       return result.user;
     } catch (error) {
-      console.error('Erro no login:', error);
+      console.error('❌ Erro no login:', error);
       throw error;
     } finally {
       setLoading(false);
@@ -84,6 +102,7 @@ export function AuthProvider({ children }) {
 
   const logout = async () => {
     try {
+      console.log('🚪 Fazendo logout...');
       // Fazer logout no backend primeiro
       if (backendToken) {
         await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/logout`, {
@@ -98,7 +117,9 @@ export function AuthProvider({ children }) {
       // Depois fazer logout no Firebase
       await signOut(auth);
       setBackendToken(null);
+      console.log('✅ Logout realizado com sucesso');
     } catch (error) {
+      console.error('❌ Erro no logout:', error);
       throw error;
     }
   };

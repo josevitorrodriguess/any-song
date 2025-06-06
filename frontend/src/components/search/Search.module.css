@@ -188,6 +188,13 @@
   text-align: center;
 }
 
+.songViews {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin: 0;
+  font-style: italic;
+}
+
 /* Selected Song */
 .selectedSong {
   background: rgba(255, 255, 255, 0.2);
@@ -244,7 +251,55 @@
 .downloadButton:hover {
   background: #059669;
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+}
+
+/* Progress Bar Styles */
+.progressContainer {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.progressBar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981, #34d399);
+  border-radius: 10px;
+  transition: width 0.3s ease;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.progressText {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* Download Status */
+.downloadStatus {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+}
+
+.downloadStatus p {
+  margin: 0;
+  color: #1f2937;
+  font-weight: 500;
 }
 
 /* Responsive Design */
@@ -264,17 +319,25 @@
   }
   
   .songTitle {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
   
   .songArtist {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+  }
+
+  .songViews {
+    font-size: 0.7rem;
   }
   
   .selectedInfo {
     flex-direction: column;
     text-align: center;
-    gap: 0.8rem;
+    gap: 1rem;
+  }
+
+  .progressBar {
+    height: 6px;
   }
 }
 
@@ -284,28 +347,31 @@
   }
   
   .searchInput {
-    padding: 0.7rem 1rem;
+    padding: 0.6rem 1rem;
     font-size: 0.9rem;
   }
   
   .searchButton {
     width: 2.5rem;
     height: 2.5rem;
-    font-size: 1rem;
   }
   
   .songItem {
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    padding: 0.7rem;
+    gap: 0.6rem;
   }
   
   .songDuration {
-    order: -1;
-    margin-left: auto;
+    font-size: 0.8rem;
+    min-width: 2.5rem;
   }
   
   .downloadButton {
-    padding: 0.8rem;
-    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .progressText {
+    font-size: 0.8rem;
   }
 } 
