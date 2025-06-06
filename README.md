@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://i.imgur.com/t3xitPo.png" alt="AnySong Demo" width="400" height="170" style="margin-bottom: -30px;">
+  <img src="https://i.imgur.com/t3xitPo.png" alt="AnySong Demo" width="400" height="170" style="margin-bottom: -60px; margin-top: -60px">
 </div>
 
 # Universal Karaoke Platform
