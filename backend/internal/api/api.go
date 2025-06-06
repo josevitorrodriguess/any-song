@@ -3,8 +3,8 @@ package api
 import (
 	"context"
 
-	firebase "firebase.google.com/go"
-	"firebase.google.com/go/auth"
+	firebase "firebase.google.com/go/v4"
+	"firebase.google.com/go/v4/auth"
 	"github.com/gofiber/fiber/v2"
 	"github.com/josevitorrodriguess/any-song/backend/internal/config"
 	"github.com/josevitorrodriguess/any-song/backend/internal/service"
