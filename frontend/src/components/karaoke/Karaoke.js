@@ -113,30 +113,6 @@ export default function Karaoke() {
                 )}
               </div>
             </div>
-
-            {(uploadedFile || selectedSong) && (
-              <div className={styles.statusContainer}>
-                <div className={styles.statusCard}>
-                  <div className={styles.statusIcon}>
-                    {uploadedFile ? '📁' : '🎵'}
-                  </div>
-                  <div className={styles.statusInfo}>
-                    <h4 className={styles.statusTitle}>Ready to Process</h4>
-                    <p className={styles.statusDescription}>
-                      {uploadedFile 
-                        ? `File: ${uploadedFile.name}`
-                        : `Song: ${selectedSong.title} by ${selectedSong.artist}`
-                      }
-                    </p>
-                  </div>
-                  <div className={styles.statusActions}>
-                    <button className={styles.processButton}>
-                      🎤 Start Processing
-                    </button>
-                  </div>
-                </div>
-              </div>
-            )}
           </div>
         </main>
       </div>
