@@ -78,7 +78,6 @@ func (api *API) SignInHandler(c *fiber.Ctx) error {
 				"error": "Erro ao criar usuário",
 			})
 		}
-		user = newUser
 	}
 
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{

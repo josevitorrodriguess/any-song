@@ -111,4 +111,4 @@ Thumbs.db
 .dockerignore 
 
 # Credenciais do Firebase Admin SDK
-backend/config/any-song-c2d0c-firebase-adminsdk-fbsvc-*.json
+backend/config
