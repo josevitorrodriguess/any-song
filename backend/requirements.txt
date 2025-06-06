@@ -1,0 +1,4 @@
+yt-dlp>=2023.12.30
+lyricsgenius>=3.0.1
+pydub>=0.25.1
+mutagen>=1.47.0 
