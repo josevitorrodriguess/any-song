@@ -173,10 +173,10 @@ def search_only(song_query: str, max_results: int = 3):
             'simulate': False,
         }
         
-        print(f"🔍 Busca rápida: {song_query}")
+        if not os.environ.get('SONG_QUERY'):
+            print(f"🔍 Busca rápida: {song_query}")
         
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-            # Busca mais específica para ser mais rápida
             search_query = f"ytsearch{max_results}:{song_query}"
             info = ydl.extract_info(search_query, download=False)
             
@@ -189,10 +189,8 @@ def search_only(song_query: str, max_results: int = 3):
                     title = entry.get('title', 'Título desconhecido')
                     uploader = entry.get('uploader', entry.get('channel', 'Canal desconhecido'))
                     
-                    # Extração de artista mais rápida
                     artist = extract_artist_from_title(title, uploader)
                     
-                    # Só pega informações essenciais
                     result = {
                         'title': title,
                         'artist': artist,
@@ -205,30 +203,28 @@ def search_only(song_query: str, max_results: int = 3):
                     
                     results.append(result)
             
-            print(f"✅ Encontrado {len(results)} resultados")
+            if not os.environ.get('SONG_QUERY'):
+                print(f"✅ Encontrado {len(results)} resultados")
+            
             return results
             
     except Exception as e:
-        print(f"❌ Erro na busca: {str(e)}")
+        if not os.environ.get('SONG_QUERY'):
+            print(f"❌ Erro na busca: {str(e)}")
         return []
 
-# Uso do programa via linha de comando ou variáveis de ambiente
 if __name__ == "__main__":
-    # Verifica se foi solicitado apenas busca
     is_search_only = '--search-only' in sys.argv
     
-    # Verifica se foi chamado com variáveis de ambiente (pelo backend Go)
     song_query = os.environ.get('SONG_QUERY')
     output_dir = os.environ.get('OUTPUT_DIR', './audios/songs')
     max_results = int(os.environ.get('MAX_RESULTS', 3))
     
     if song_query:
         if is_search_only:
-            # Apenas busca, retorna JSON
             results = search_only(song_query, max_results)
             print(json.dumps(results, ensure_ascii=False))
         else:
-            # Download tradicional
             print(f"🎵 Executando download via variável de ambiente...")
             result = download_song(song_query, output_dir)
             
@@ -239,7 +235,6 @@ if __name__ == "__main__":
                 sys.exit(1)
                 
     elif len(sys.argv) > 1 and not is_search_only:
-        # Modo linha de comando tradicional
         song_query = sys.argv[1]
         output_dir = sys.argv[2] if len(sys.argv) > 2 else './audios/songs'
         

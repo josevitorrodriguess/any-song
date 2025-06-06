@@ -69,7 +69,7 @@ services:
       - DB_PASSWORD=${POSTGRES_PASSWORD:-anysong_password}
       - DB_PORT=${POSTGRES_PORT:-5432}
       - FIREBASE_CREDENTIALS_PATH=${FIREBASE_CREDENTIALS_PATH:-config/anysong-2025-firebase-adminsdk-fbsvc-a19a4428fe.json}
-      - GOOGLE_APPLICATION_CREDENTIALS={GOOGLE_APPLICATION_CREDENTIALS:-config\anysong-2025-a9d6c47dc9e0.json}
+      - GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_APPLICATION_CREDENTIALS:-config/anysong-2025-a9d6c47dc9e0.json}
       - GCS_BUCKET_NAME=${GCS_BUCKET_NAME:-anysong-audios}
     depends_on:
       - db
