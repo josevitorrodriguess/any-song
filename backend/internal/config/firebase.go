@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	firebase "firebase.google.com/go"
+	firebase "firebase.google.com/go/v4"
 	"google.golang.org/api/option"
 )
 
@@ -15,7 +15,6 @@ func GetFireBaseApp() (*firebase.App, error) {
 		return nil, fmt.Errorf("FIREBASE_CREDENTIALS_PATH environment variable is not set")
 	}
 
-	
 	opt := option.WithCredentialsFile(path)
 
 	app, err := firebase.NewApp(context.Background(), nil, opt)

@@ -23,23 +23,16 @@ type DatabaseConfig struct {
 }
 
 func loadDBConfig() *DatabaseConfig {
-	port, _ := strconv.Atoi(getEnv("DB_PORT", "5433"))
+	port, _ := strconv.Atoi(os.Getenv("DB_PORT"))
 
 	return &DatabaseConfig{
-		Host:     getEnv("DB_HOST", "localhost"),
+		Host:     os.Getenv("DB_HOST"),
 		Port:     port,
-		User:     getEnv("DB_USER", "anysong_user"),
-		Password: getEnv("DB_PASSWORD", "anysong_password"),
-		DBName:   getEnv("DB_NAME", "anysong_db"),
-		SSLMode:  getEnv("DB_SSL_MODE", "disable"),
+		User:     os.Getenv("DB_USER"),
+		Password: os.Getenv("DB_PASSWORD"),
+		DBName:   os.Getenv("DB_NAME"),
+		SSLMode:  os.Getenv("DB_SSL_MODE"),
 	}
-}
-
-func getEnv(key, defaultValue string) string {
-	if value := os.Getenv(key); value != "" {
-		return value
-	}
-	return defaultValue
 }
 
 func ConnectDatabase() *gorm.DB {
@@ -89,7 +82,7 @@ func TestConnection(db *gorm.DB) error {
 
 func runMigrations(db *gorm.DB) error {
 	log.Println("Executando migrações...")
-	
+
 	// Drop existing tables in reverse order to avoid foreign key constraints
 	if err := db.Migrator().DropTable(&models.Song{}, &models.Artist{}, &models.Genre{}, &models.User{}); err != nil {
 		return fmt.Errorf("erro ao dropar tabelas: %v", err)
