@@ -9,6 +9,7 @@ import (
 type Song struct {
 	ID              uuid.UUID `json:"id" gorm:"primaryKey;type:uuid;default:gen_random_uuid()"`
 	Title           string    `json:"title" gorm:"not null"`
+	NormalizedTitle string    `json:"-" gorm:"not null;uniqueIndex"`
 	ArtistID        uuid.UUID `json:"-"`
 	Artist          Artist    `json:"artist,omitempty" gorm:"foreignKey:ArtistID"`
 	GenreID         uuid.UUID `json:"-"`
