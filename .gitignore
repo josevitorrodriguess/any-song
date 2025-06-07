@@ -112,3 +112,8 @@ Thumbs.db
 
 # Credenciais do Firebase Admin SDK
 backend/config
+
+# Data scripts
+backend\data_roots
+backend\utils\lyrics
+backend\utils\audio_sync.py
