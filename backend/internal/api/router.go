@@ -36,6 +36,9 @@ func (api *API) SetupRoutes() {
 	// Song search route
 	api.Router.Post("/search-song", api.AuthMiddleware(), api.SearchSongHandler)
 
+	// Lyrics route - Nova rota adicionada
+	api.Router.Post("/lyrics/fetch", api.AuthMiddleware(), api.CatchLyricsHandler)
+
 	api.Router.Get("/protected", api.AuthMiddleware(), api.ProtectedHandler)
 	api.Router.Get("/health", func(c *fiber.Ctx) error {
 		return c.JSON(fiber.Map{"status": "ok"})
