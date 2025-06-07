@@ -1,0 +1,1014 @@
+{
+  "filename": "seu_pereira_e_coletivo_401.mp3",
+  "processing_mode": "multilingual",
+  "duration": 276.7354375,
+  "duration_minutes": 4.612257291666666,
+  "segments": [
+    {
+      "id": 1,
+      "start": 7.98,
+      "end": 27.62,
+      "duration": 19.64,
+      "text": "Tô te esperando amor, resta saber, se irás voltar com a tua boca que era minha.",
+      "words": [
+        {
+          "start": 7.98,
+          "end": 9.34,
+          "word": "Tô",
+          "probability": 0.732
+        },
+        {
+          "start": 9.34,
+          "end": 9.54,
+          "word": "te",
+          "probability": 0.906
+        },
+        {
+          "start": 9.54,
+          "end": 10.22,
+          "word": "esperando",
+          "probability": 0.998
+        },
+        {
+          "start": 10.22,
+          "end": 10.78,
+          "word": "amor,",
+          "probability": 0.787
+        },
+        {
+          "start": 10.86,
+          "end": 14.16,
+          "word": "resta",
+          "probability": 0.932
+        },
+        {
+          "start": 14.16,
+          "end": 14.84,
+          "word": "saber,",
+          "probability": 0.996
+        },
+        {
+          "start": 15.68,
+          "end": 17.92,
+          "word": "se",
+          "probability": 0.92
+        },
+        {
+          "start": 17.92,
+          "end": 18.34,
+          "word": "irás",
+          "probability": 0.969
+        },
+        {
+          "start": 18.34,
+          "end": 18.96,
+          "word": "voltar",
+          "probability": 0.999
+        },
+        {
+          "start": 18.96,
+          "end": 22.14,
+          "word": "com",
+          "probability": 0.524
+        },
+        {
+          "start": 22.14,
+          "end": 22.34,
+          "word": "a",
+          "probability": 0.969
+        },
+        {
+          "start": 22.34,
+          "end": 22.6,
+          "word": "tua",
+          "probability": 0.988
+        },
+        {
+          "start": 22.6,
+          "end": 23.3,
+          "word": "boca",
+          "probability": 0.997
+        },
+        {
+          "start": 23.3,
+          "end": 26.52,
+          "word": "que",
+          "probability": 0.671
+        },
+        {
+          "start": 26.52,
+          "end": 27.0,
+          "word": "era",
+          "probability": 0.997
+        },
+        {
+          "start": 27.0,
+          "end": 27.62,
+          "word": "minha.",
+          "probability": 0.973
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "start": 30.0,
+      "end": 57.66,
+      "duration": 27.66,
+      "text": "Até ontem, tô tão cansado amor, resta saber, se irei dormir e acordar com a tua volta.",
+      "words": [
+        {
+          "start": 30.0,
+          "end": 31.0,
+          "word": "Até",
+          "probability": 0.691
+        },
+        {
+          "start": 31.0,
+          "end": 31.8,
+          "word": "ontem,",
+          "probability": 0.996
+        },
+        {
+          "start": 31.8,
+          "end": 39.24,
+          "word": "tô",
+          "probability": 0.131
+        },
+        {
+          "start": 39.24,
+          "end": 39.58,
+          "word": "tão",
+          "probability": 0.969
+        },
+        {
+          "start": 39.58,
+          "end": 40.38,
+          "word": "cansado",
+          "probability": 0.995
+        },
+        {
+          "start": 40.38,
+          "end": 40.94,
+          "word": "amor,",
+          "probability": 0.65
+        },
+        {
+          "start": 41.64,
+          "end": 44.16,
+          "word": "resta",
+          "probability": 0.933
+        },
+        {
+          "start": 44.16,
+          "end": 44.86,
+          "word": "saber,",
+          "probability": 0.993
+        },
+        {
+          "start": 45.8,
+          "end": 47.94,
+          "word": "se",
+          "probability": 0.927
+        },
+        {
+          "start": 47.94,
+          "end": 48.32,
+          "word": "irei",
+          "probability": 0.999
+        },
+        {
+          "start": 48.32,
+          "end": 48.8,
+          "word": "dormir",
+          "probability": 0.998
+        },
+        {
+          "start": 48.8,
+          "end": 52.32,
+          "word": "e",
+          "probability": 0.577
+        },
+        {
+          "start": 52.32,
+          "end": 54.3,
+          "word": "acordar",
+          "probability": 0.97
+        },
+        {
+          "start": 54.3,
+          "end": 56.48,
+          "word": "com",
+          "probability": 0.665
+        },
+        {
+          "start": 56.48,
+          "end": 56.66,
+          "word": "a",
+          "probability": 0.984
+        },
+        {
+          "start": 56.66,
+          "end": 56.94,
+          "word": "tua",
+          "probability": 0.878
+        },
+        {
+          "start": 56.94,
+          "end": 57.66,
+          "word": "volta.",
+          "probability": 0.998
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "start": 60.0,
+      "end": 66.36,
+      "duration": 6.36,
+      "text": "Com as tuas botas no corredor.",
+      "words": [
+        {
+          "start": 60.0,
+          "end": 60.72,
+          "word": "Com",
+          "probability": 0.706
+        },
+        {
+          "start": 60.72,
+          "end": 60.98,
+          "word": "as",
+          "probability": 0.986
+        },
+        {
+          "start": 60.98,
+          "end": 61.46,
+          "word": "tuas",
+          "probability": 0.97
+        },
+        {
+          "start": 61.46,
+          "end": 62.7,
+          "word": "botas",
+          "probability": 0.991
+        },
+        {
+          "start": 62.7,
+          "end": 65.04,
+          "word": "no",
+          "probability": 0.484
+        },
+        {
+          "start": 65.04,
+          "end": 66.36,
+          "word": "corredor.",
+          "probability": 0.994
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "start": 96.36,
+      "end": 100.58,
+      "duration": 4.22,
+      "text": "Nada é perfeito.",
+      "words": [
+        {
+          "start": 96.36,
+          "end": 98.76,
+          "word": "Nada",
+          "probability": 0.933
+        },
+        {
+          "start": 98.76,
+          "end": 99.24,
+          "word": "é",
+          "probability": 0.999
+        },
+        {
+          "start": 99.24,
+          "end": 100.58,
+          "word": "perfeito.",
+          "probability": 0.995
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "start": 141.0,
+      "end": 144.06,
+      "duration": 3.06,
+      "text": "Já te pedi perdão.",
+      "words": [
+        {
+          "start": 141.0,
+          "end": 142.12,
+          "word": "Já",
+          "probability": 0.727
+        },
+        {
+          "start": 142.12,
+          "end": 142.4,
+          "word": "te",
+          "probability": 0.974
+        },
+        {
+          "start": 142.4,
+          "end": 142.96,
+          "word": "pedi",
+          "probability": 0.996
+        },
+        {
+          "start": 142.96,
+          "end": 144.06,
+          "word": "perdão.",
+          "probability": 0.999
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "start": 144.06,
+      "end": 151.82,
+      "duration": 7.76,
+      "text": "Ah, por favor, tente entender.",
+      "words": [
+        {
+          "start": 144.06,
+          "end": 146.2,
+          "word": "Ah,",
+          "probability": 0.615
+        },
+        {
+          "start": 146.8,
+          "end": 146.94,
+          "word": "por",
+          "probability": 0.986
+        },
+        {
+          "start": 146.94,
+          "end": 147.68,
+          "word": "favor,",
+          "probability": 1.0
+        },
+        {
+          "start": 148.54,
+          "end": 151.22,
+          "word": "tente",
+          "probability": 0.827
+        },
+        {
+          "start": 151.22,
+          "end": 151.82,
+          "word": "entender.",
+          "probability": 0.999
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "start": 153.66,
+      "end": 160.78,
+      "duration": 7.12,
+      "text": "O meu vacilo não anula o resto.",
+      "words": [
+        {
+          "start": 153.66,
+          "end": 155.06,
+          "word": "O",
+          "probability": 0.743
+        },
+        {
+          "start": 155.06,
+          "end": 155.34,
+          "word": "meu",
+          "probability": 0.987
+        },
+        {
+          "start": 155.34,
+          "end": 156.36,
+          "word": "vacilo",
+          "probability": 0.998
+        },
+        {
+          "start": 156.36,
+          "end": 157.62,
+          "word": "não",
+          "probability": 0.84
+        },
+        {
+          "start": 157.62,
+          "end": 159.74,
+          "word": "anula",
+          "probability": 0.934
+        },
+        {
+          "start": 159.74,
+          "end": 159.94,
+          "word": "o",
+          "probability": 0.981
+        },
+        {
+          "start": 159.94,
+          "end": 160.78,
+          "word": "resto.",
+          "probability": 0.997
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "start": 162.74,
+      "end": 169.08,
+      "duration": 6.34,
+      "text": "Eu te amo, meu amor.",
+      "words": [
+        {
+          "start": 162.74,
+          "end": 163.86,
+          "word": "Eu",
+          "probability": 0.667
+        },
+        {
+          "start": 163.86,
+          "end": 164.14,
+          "word": "te",
+          "probability": 0.918
+        },
+        {
+          "start": 164.14,
+          "end": 164.7,
+          "word": "amo,",
+          "probability": 0.999
+        },
+        {
+          "start": 165.18,
+          "end": 168.34,
+          "word": "meu",
+          "probability": 0.942
+        },
+        {
+          "start": 168.34,
+          "end": 169.08,
+          "word": "amor.",
+          "probability": 0.998
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "start": 169.08,
+      "end": 185.36,
+      "duration": 16.28,
+      "text": "A dor do abandono corra em meu peito feito marizinha.",
+      "words": [
+        {
+          "start": 169.08,
+          "end": 171.7,
+          "word": "A",
+          "probability": 0.864
+        },
+        {
+          "start": 171.7,
+          "end": 172.82,
+          "word": "dor",
+          "probability": 0.988
+        },
+        {
+          "start": 172.82,
+          "end": 175.76,
+          "word": "do",
+          "probability": 0.927
+        },
+        {
+          "start": 175.76,
+          "end": 177.64,
+          "word": "abandono",
+          "probability": 0.996
+        },
+        {
+          "start": 177.64,
+          "end": 180.42,
+          "word": "corra",
+          "probability": 0.483
+        },
+        {
+          "start": 180.42,
+          "end": 181.08,
+          "word": "em",
+          "probability": 0.904
+        },
+        {
+          "start": 181.08,
+          "end": 181.34,
+          "word": "meu",
+          "probability": 0.997
+        },
+        {
+          "start": 181.34,
+          "end": 181.98,
+          "word": "peito",
+          "probability": 1.0
+        },
+        {
+          "start": 181.98,
+          "end": 184.12,
+          "word": "feito",
+          "probability": 0.859
+        },
+        {
+          "start": 184.12,
+          "end": 185.36,
+          "word": "marizinha.",
+          "probability": 0.723
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "start": 188.26,
+      "end": 191.06,
+      "duration": 2.8,
+      "text": "Um dia...",
+      "words": [
+        {
+          "start": 188.26,
+          "end": 189.66,
+          "word": "Um",
+          "probability": 0.863
+        },
+        {
+          "start": 189.66,
+          "end": 191.06,
+          "word": "dia...",
+          "probability": 0.548
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "start": 192.36,
+      "end": 194.96,
+      "duration": 2.6,
+      "text": "Quem sabe um dia...",
+      "words": [
+        {
+          "start": 192.1,
+          "end": 192.8,
+          "word": "Quem",
+          "probability": 0.709
+        },
+        {
+          "start": 192.8,
+          "end": 193.24,
+          "word": "sabe",
+          "probability": 0.983
+        },
+        {
+          "start": 193.24,
+          "end": 193.52,
+          "word": "um",
+          "probability": 0.975
+        },
+        {
+          "start": 193.52,
+          "end": 194.96,
+          "word": "dia...",
+          "probability": 0.777
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "start": 194.96,
+      "end": 199.14,
+      "duration": 4.18,
+      "text": "Você perceba...",
+      "words": [
+        {
+          "start": 194.96,
+          "end": 197.32,
+          "word": "Você",
+          "probability": 0.808
+        },
+        {
+          "start": 197.32,
+          "end": 199.14,
+          "word": "perceba...",
+          "probability": 0.575
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "start": 199.14,
+      "end": 203.42,
+      "duration": 4.28,
+      "text": "Nada é perfeito.",
+      "words": [
+        {
+          "start": 199.14,
+          "end": 201.56,
+          "word": "Nada",
+          "probability": 0.829
+        },
+        {
+          "start": 201.56,
+          "end": 202.2,
+          "word": "é",
+          "probability": 0.999
+        },
+        {
+          "start": 202.2,
+          "end": 203.42,
+          "word": "perfeito.",
+          "probability": 0.981
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "start": 209.42,
+      "end": 210.82,
+      "duration": 1.4,
+      "text": "Ah...",
+      "words": [
+        {
+          "start": 209.42,
+          "end": 210.82,
+          "word": "Ah...",
+          "probability": 0.426
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "start": 217.74,
+      "end": 219.14,
+      "duration": 1.4,
+      "text": "Ah...",
+      "words": [
+        {
+          "start": 217.74,
+          "end": 219.14,
+          "word": "Ah...",
+          "probability": 0.84
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "start": 219.14,
+      "end": 220.52,
+      "duration": 1.38,
+      "text": "Ah...",
+      "words": [
+        {
+          "start": 219.14,
+          "end": 220.52,
+          "word": "Ah...",
+          "probability": 0.969
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "start": 227.5,
+      "end": 228.9,
+      "duration": 1.4,
+      "text": "Ah...",
+      "words": [
+        {
+          "start": 227.5,
+          "end": 228.9,
+          "word": "Ah...",
+          "probability": 0.213
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "start": 232.38,
+      "end": 233.78,
+      "duration": 1.4,
+      "text": "Ah...",
+      "words": [
+        {
+          "start": 232.38,
+          "end": 233.78,
+          "word": "Ah...",
+          "probability": 0.597
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "start": 233.78,
+      "end": 234.0,
+      "duration": 0.22,
+      "text": "Ah...",
+      "words": [
+        {
+          "start": 233.78,
+          "end": 234.0,
+          "word": "Ah...",
+          "probability": 0.693
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "start": 234.0,
+      "end": 235.74,
+      "duration": 1.74,
+      "text": "Ah...",
+      "words": [
+        {
+          "start": 234.0,
+          "end": 235.74,
+          "word": "Ah...",
+          "probability": 0.671
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "start": 241.02,
+      "end": 242.42,
+      "duration": 1.4,
+      "text": "Ah...",
+      "words": [
+        {
+          "start": 241.02,
+          "end": 242.42,
+          "word": "Ah...",
+          "probability": 0.675
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "start": 242.42,
+      "end": 243.84,
+      "duration": 1.42,
+      "text": "Ah...",
+      "words": [
+        {
+          "start": 242.42,
+          "end": 243.84,
+          "word": "Ah...",
+          "probability": 0.01
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "start": 243.84,
+      "end": 244.76,
+      "duration": 0.92,
+      "text": "Ah...",
+      "words": [
+        {
+          "start": 243.84,
+          "end": 244.76,
+          "word": "Ah...",
+          "probability": 0.39
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "start": 244.76,
+      "end": 245.36,
+      "duration": 0.6,
+      "text": "Ah...",
+      "words": [
+        {
+          "start": 244.76,
+          "end": 245.36,
+          "word": "Ah...",
+          "probability": 0.699
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "start": 246.86,
+      "end": 248.02,
+      "duration": 1.16,
+      "text": "Ah...",
+      "words": [
+        {
+          "start": 246.86,
+          "end": 248.02,
+          "word": "Ah...",
+          "probability": 0.027
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "start": 248.02,
+      "end": 248.78,
+      "duration": 0.76,
+      "text": "Ah...",
+      "words": [
+        {
+          "start": 248.02,
+          "end": 248.78,
+          "word": "Ah...",
+          "probability": 0.367
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "start": 248.78,
+      "end": 248.84,
+      "duration": 0.06,
+      "text": "Ah...",
+      "words": [
+        {
+          "start": 248.78,
+          "end": 248.84,
+          "word": "Ah...",
+          "probability": 0.407
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "start": 248.84,
+      "end": 249.02,
+      "duration": 0.18,
+      "text": "Ah...",
+      "words": [
+        {
+          "start": 248.84,
+          "end": 249.02,
+          "word": "Ah...",
+          "probability": 0.465
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "start": 249.02,
+      "end": 249.78,
+      "duration": 0.76,
+      "text": "Ah...",
+      "words": [
+        {
+          "start": 249.02,
+          "end": 249.78,
+          "word": "Ah...",
+          "probability": 0.516
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "start": 249.78,
+      "end": 249.82,
+      "duration": 0.04,
+      "text": "Ah...",
+      "words": [
+        {
+          "start": 249.78,
+          "end": 249.82,
+          "word": "Ah...",
+          "probability": 0.627
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "start": 249.82,
+      "end": 249.86,
+      "duration": 0.04,
+      "text": "Ah...",
+      "words": [
+        {
+          "start": 249.82,
+          "end": 249.86,
+          "word": "Ah...",
+          "probability": 0.733
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "start": 249.86,
+      "end": 250.44,
+      "duration": 0.58,
+      "text": "Ah...",
+      "words": [
+        {
+          "start": 249.86,
+          "end": 250.44,
+          "word": "Ah...",
+          "probability": 0.783
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "start": 254.38,
+      "end": 255.54,
+      "duration": 1.16,
+      "text": "Ah...",
+      "words": [
+        {
+          "start": 254.38,
+          "end": 255.54,
+          "word": "Ah...",
+          "probability": 0.868
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "start": 255.54,
+      "end": 272.22,
+      "duration": 16.68,
+      "text": "Um dia, quem sabe um dia, você perceba, nada é perfeito.",
+      "words": [
+        {
+          "start": 255.54,
+          "end": 258.18,
+          "word": "Um",
+          "probability": 0.894
+        },
+        {
+          "start": 258.18,
+          "end": 258.74,
+          "word": "dia,",
+          "probability": 0.994
+        },
+        {
+          "start": 259.5,
+          "end": 261.36,
+          "word": "quem",
+          "probability": 0.993
+        },
+        {
+          "start": 261.36,
+          "end": 261.8,
+          "word": "sabe",
+          "probability": 0.999
+        },
+        {
+          "start": 261.8,
+          "end": 262.08,
+          "word": "um",
+          "probability": 0.999
+        },
+        {
+          "start": 262.08,
+          "end": 262.44,
+          "word": "dia,",
+          "probability": 1.0
+        },
+        {
+          "start": 262.44,
+          "end": 265.84,
+          "word": "você",
+          "probability": 0.908
+        },
+        {
+          "start": 265.84,
+          "end": 266.96,
+          "word": "perceba,",
+          "probability": 0.999
+        },
+        {
+          "start": 267.78,
+          "end": 270.22,
+          "word": "nada",
+          "probability": 0.993
+        },
+        {
+          "start": 270.22,
+          "end": 270.7,
+          "word": "é",
+          "probability": 1.0
+        },
+        {
+          "start": 270.7,
+          "end": 272.22,
+          "word": "perfeito.",
+          "probability": 0.999
+        }
+      ]
+    }
+  ],
+  "full_text": "Tô te esperando amor, resta saber, se irás voltar com a tua boca que era minha. Até ontem, tô tão cansado amor, resta saber, se irei dormir e acordar com a tua volta. Com as tuas botas no corredor. Nada é perfeito. Já te pedi perdão. Ah, por favor, tente entender. O meu vacilo não anula o resto. Eu te amo, meu amor. A dor do abandono corra em meu peito feito marizinha. Um dia... Quem sabe um dia... Você perceba... Nada é perfeito. Ah... Ah... Ah... Ah... Ah... Ah... Ah... Ah... Ah... Ah... Ah... Ah... Ah... Ah... Ah... Ah... Ah... Ah... Ah... Ah... Um dia, quem sabe um dia, você perceba, nada é perfeito.",
+  "word_count": 115,
+  "segments_count": 34,
+  "timing": {
+    "total_time": 714.48,
+    "model_load_time": 440.05,
+    "transcribe_time": 15.14,
+    "speed_ratio": 0.4,
+    "coverage_percentage": 98.4
+  }
+}

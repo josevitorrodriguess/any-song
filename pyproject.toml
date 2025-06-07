@@ -31,21 +31,17 @@ classifiers = [
 dependencies = [
     # Para download de vídeos/áudios do YouTube
     "yt-dlp>=2023.7.6",
-    
     # Para busca de letras
     "musicxmatch-api>=0.1.0",
-    
     # Para criação de backing tracks
     "musicai-sdk>=1.0.0",
-    
     # Para manipulação de variáveis de ambiente
     "python-dotenv>=1.0.0",
-    
     # Para requisições HTTP
     "requests>=2.31.0",
-    
     # Bibliotecas padrão já incluídas no Python
     # json, os são built-in
+    "gh>=0.0.4",
 ]
 
 [project.optional-dependencies]

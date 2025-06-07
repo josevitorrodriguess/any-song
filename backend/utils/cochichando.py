@@ -162,7 +162,7 @@ def save_transcription(result: dict, output_path: str = None):
     if output_path is None:
         # Criar nome do arquivo baseado no áudio original
         audio_name = result.get('filename', 'audio').replace('.mp3', '').replace('.wav', '')
-        output_path = f"/root/any-song/backend/utils/lyrics/{audio_name}.json"
+        output_path = f"backend/utils/lyrics/{audio_name}.json"
     
     # Criar diretório se não existir
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
@@ -193,38 +193,40 @@ def print_full_transcript(result: dict):
     print("="*80)
 
 
-if __name__ == "__main__":
+def transcribe_and_save(audio_file: str):
     # Teste com arquivo de áudio
-    audio_file = "/root/any-song/backend/utils/audios/songs/Seu Pereira e Coletivo 401 - Até Ontem.mp3"
-    
     if os.path.exists(audio_file):
         print("🎵 Iniciando transcrição completa da música...")
-        
         # Transcrever com configurações otimizadas
-        result = transcribe_full_audio(audio_file, model_size="turbo")
-        
-        if "error" not in result:
-            # Mostrar transcrição completa
-            print_full_transcript(result)
-            
-            # Salvar resultado
-            saved_path = save_transcription(result)
-            if saved_path:
-                print(f"📁 Arquivo salvo: {saved_path}")
-        else:
-            print(f"❌ {result['error']}")
-    else:
-        print(f"❌ Arquivo não encontrado: {audio_file}")
-        
-        # Listar arquivos disponíveis
-        songs_dir = "/root/any-song/backend/utils/audios/songs/"
-        if os.path.exists(songs_dir):
-            files = [f for f in os.listdir(songs_dir) if f.endswith(('.mp3', '.wav', '.m4a'))]
-            if files:
-                print(f"\n💡 Arquivos disponíveis em {songs_dir}:")
-                for f in files:
-                    print(f"   • {f}")
+        try:
+            result = transcribe_full_audio(audio_file, model_size="turbo")
+            save_transcription(result)
+            return result
+        except Exception as e:
+            if "error" not in result:
+                # Mostrar transcrição completa
+                print_full_transcript(result)
+                
+                # Salvar resultado
+                saved_path = save_transcription(result)
+                if saved_path:
+                    print(f"📁 Arquivo salvo: {saved_path}")
             else:
-                print(f"📁 Pasta {songs_dir} está vazia")
-        else:
-            print(f"📁 Pasta {songs_dir} não existe") 
+                print(f"❌ {result['error']}")
+
+
+        # else:
+        #     print(f"❌ Arquivo não encontrado: {audio_file}")
+            
+        #     # Listar arquivos disponíveis
+        #     songs_dir = "/root/any-song/backend/utils/audios/songs/"
+        #     if os.path.exists(songs_dir):
+        #         files = [f for f in os.listdir(songs_dir) if f.endswith(('.mp3', '.wav', '.m4a'))]
+        #         if files:
+        #             print(f"\n💡 Arquivos disponíveis em {songs_dir}:")
+        #             for f in files:
+        #                 print(f"   • {f}")
+        #         else:
+        #             print(f"📁 Pasta {songs_dir} está vazia")
+        #     else:
+        #         print(f"📁 Pasta {songs_dir} não existe") 
