@@ -4,8 +4,11 @@ from musicxmatch_api import MusixMatchAPI
 import os
 api = MusixMatchAPI()
 
-def lyrics(music_name: str): 
-    search = api.search_tracks(music_name)
+def lyrics(music_name: str, artist_name: str = None): 
+    if artist_name:
+        search = api.search_tracks(music_name, artist_name)
+    else:
+        search = api.search_tracks(music_name)
     track_id = search['message']['body']['track_list'][0]['track']['track_id']
     lyrics = api.get_track_lyrics(track_id)
     os.makedirs("/root/any-song/backend/utils/lyrics", exist_ok=True)
