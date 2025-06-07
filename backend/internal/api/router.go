@@ -39,7 +39,11 @@ func (api *API) SetupRoutes() {
 	// Lyrics route - Nova rota adicionada
 	api.Router.Post("/lyrics/fetch", api.AuthMiddleware(), api.CatchLyricsHandler)
 
-	api.Router.Get("/karaokefy", api.AuthMiddleware(), api.GetLyricsHandler)
+	// Transcription routes 
+	api.Router.Post("/transcribe", api.AuthMiddleware(), api.TranscribeAudioHandler)
+
+	// Audio files route
+	api.Router.Get("/audio-files", api.AuthMiddleware(), api.ListAudioFilesHandler)
 
 	api.Router.Get("/protected", api.AuthMiddleware(), api.ProtectedHandler)
 	api.Router.Get("/health", func(c *fiber.Ctx) error {
