@@ -36,6 +36,15 @@ func (api *API) SetupRoutes() {
 	// Song search route
 	api.Router.Post("/search-song", api.AuthMiddleware(), api.SearchSongHandler)
 
+	// Lyrics route - Nova rota adicionada
+	api.Router.Post("/lyrics/fetch", api.AuthMiddleware(), api.CatchLyricsHandler)
+
+	// Transcription routes 
+	api.Router.Post("/transcribe", api.AuthMiddleware(), api.TranscribeAudioHandler)
+
+	// Audio files route
+	api.Router.Get("/audio-files", api.AuthMiddleware(), api.ListAudioFilesHandler)
+
 	api.Router.Get("/protected", api.AuthMiddleware(), api.ProtectedHandler)
 	api.Router.Get("/health", func(c *fiber.Ctx) error {
 		return c.JSON(fiber.Map{"status": "ok"})
