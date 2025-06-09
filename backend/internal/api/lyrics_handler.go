@@ -138,6 +138,6 @@ except Exception as e:
 			Error:   fmt.Sprintf("Failed to parse script output: %s. Raw output: %s", err.Error(), string(output)),
 		}, nil
 	}
-
+	_ = scriptPath
 	return &result, nil
 }
