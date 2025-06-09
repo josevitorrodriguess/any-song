@@ -148,8 +148,7 @@ def transcribe_full_audio(audio_path: str, model_size: str = "base"):
             "speed_ratio": round(speed_ratio, 1),
             "coverage_percentage": round(coverage_percentage, 1)
         }
-        
-        return result
+        return result['segments']
         
     except Exception as e:
         return {"error": f"Erro na transcrição: {str(e)}"}

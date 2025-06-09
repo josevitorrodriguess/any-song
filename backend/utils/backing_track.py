@@ -41,41 +41,10 @@ def gen_backing_track(song_path: str):
                 print("Resultados encontrados no job:", job["result"])
                 
                 # Procurar pela backing track (pode ter nomes diferentes)
-                backing_track_url = None
+                backing_track_url = job['result']['backing_track']
                 
-                if 'backing_track' in job["result"]:
-                    backing_track_url = job["result"]['backing_track']
+                return backing_track_url
                 
-                # Se não encontrou com as chaves conhecidas, pegar o primeiro resultado
-                if not backing_track_url:
-                    result_keys = list(job["result"].keys())
-                    if result_keys:
-                        backing_track_url = job["result"][result_keys[0]]
-                        print(f"Usando primeiro resultado disponível '{result_keys[0]}': {backing_track_url}")
-                
-                if backing_track_url:
-                    song_name = song_path.split("/")[-1].split(".")[0]
-                    os.makedirs("./backend/utils/audios/backing_tracks", exist_ok=True)
-                    
-                    output_path = f"./backend/utils/audios/backing_tracks/{song_name}.mp3"
-                    if os.path.exists(output_path):
-                        os.remove(output_path)
-                        
-                    # Baixar apenas o arquivo de backing track
-                    print("Baixando apenas a backing track...")
-                    response = requests.get(backing_track_url)
-                    with open(output_path, "wb") as f:
-                        f.write(response.content)
-                    
-                    # Deletar o job após o processamento
-                    client.delete_job(job_id)
-                    print(f"Backing track salva em: {output_path}")
-                    
-                    return output_path
-                else:
-                    print("Não foi possível encontrar a URL da backing track nos resultados!")
-                    client.delete_job(job_id)
-                    return None
             else:
                 print("Nenhum resultado encontrado no job!")
                 print("Dados do job:", job)

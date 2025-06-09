@@ -4,8 +4,12 @@ from shazamio import Shazam
 
 async def get_song_name(path_original_song: str):
     shazam = Shazam()
-    out = await shazam.recognize(path_original_song)  # rust version, use this!
-    return out['track']['title'], out['track']['subtitle']
+    out = await shazam.recognize(path_original_song)  
+    print(out)
+    if out['matches'] != []:
+        return out['track']['title'], out['track']['subtitle']
+    else:
+        return None, None
 
 
 if __name__ == "__main__":
